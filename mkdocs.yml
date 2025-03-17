@@ -3,7 +3,7 @@ site_description: Documentation for the team
 site_author: Mikkel
 
 theme:
-  name: readthedocs
+  name: material
 
 nav:
   - Home: index.md
