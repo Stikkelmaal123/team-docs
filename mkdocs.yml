@@ -9,3 +9,8 @@ nav:
   - Home: index.md
   - About: about.md
   - Guidelines: guidelines.md
+  - Git-stragegy: git-strategy.md
+  - Static-code-analysis: static-code-analysis.md
+  - Unit-testing: unit-testing.md
+  - E2e-testing: e2e-testing.md
+  - GitHub-actions: github-actions.md
