@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>Guidelines - Team Documentation</title>
+        <title>GitHub-actions - Team Documentation</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,8 +80,8 @@
                 </a>
             </li>
             <li class="drac-box">
-                <a href="./"
-                    class=" active 
+                <a href="../guidelines/"
+                    class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Guidelines
                 </a>
@@ -115,8 +115,8 @@
                 </a>
             </li>
             <li class="drac-box">
-                <a href="../github-actions/"
-                    class="
+                <a href="./"
+                    class=" active 
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     GitHub-actions
                 </a>
@@ -149,14 +149,14 @@
         <div class="container">
             <div class="row row-preview">
                 <div class="col">
-                    <a href="../about/"
+                    <a href="../e2e-testing/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </div>
                 <div class="col">
-                    <a href="../git-strategy/"
-                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
+                    <a 
+                        class="btn-preview drac-btn drac-text-white--hover disabled" style="padding-left: 3%;">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </div>
@@ -192,17 +192,14 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h1 id="team-guidelines">Team Guidelines</h1>
-<h2 id="communication">Communication</h2>
-<pre><code>- Check email at least twice daily
-- Respond to Slack messages within 4 seconds
-- Attend daily standup meetings
-</code></pre>
-<h2 id="development-workflow">Development Workflow</h2>
-<pre><code>1. Create a branch for each feature
-2. Submit pull request for review
-3. Ensure test pass before merging
-</code></pre></p>
+        <p><h1 id="github-actions-workflow">GitHub Actions Workflow</h1>
+<p>Our GitHub Actions workflow automates the following tasks:</p>
+<ul>
+<li>Running unit tests</li>
+<li>Running E2E tests</li>
+<li>Deploying to GitHub Pages</li>
+</ul>
+<p>The workflow file is located in <code>.github/workflows/ci.yml</code>.</p></p>
     </article>
 </section>
             <!-- endblock -->

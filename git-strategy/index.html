@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>Guidelines - Team Documentation</title>
+        <title>Git-stragegy - Team Documentation</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,15 +80,15 @@
                 </a>
             </li>
             <li class="drac-box">
-                <a href="./"
-                    class=" active 
+                <a href="../guidelines/"
+                    class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Guidelines
                 </a>
             </li>
             <li class="drac-box">
-                <a href="../git-strategy/"
-                    class="
+                <a href="./"
+                    class=" active 
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Git-stragegy
                 </a>
@@ -149,13 +149,13 @@
         <div class="container">
             <div class="row row-preview">
                 <div class="col">
-                    <a href="../about/"
+                    <a href="../guidelines/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </div>
                 <div class="col">
-                    <a href="../git-strategy/"
+                    <a href="../static-code-analysis/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
@@ -192,17 +192,14 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h1 id="team-guidelines">Team Guidelines</h1>
-<h2 id="communication">Communication</h2>
-<pre><code>- Check email at least twice daily
-- Respond to Slack messages within 4 seconds
-- Attend daily standup meetings
-</code></pre>
-<h2 id="development-workflow">Development Workflow</h2>
-<pre><code>1. Create a branch for each feature
-2. Submit pull request for review
-3. Ensure test pass before merging
-</code></pre></p>
+        <p><h1 id="git-branching-strategy">Git Branching Strategy</h1>
+<p>We use the following branching strategy for this project:</p>
+<ul>
+<li><strong>Main branch</strong>: Contains production-ready code.</li>
+<li><strong>Feature branches</strong>: Used for developing new features.</li>
+<li><strong>Hotfix branches</strong>: For urgent fixes to the main branch.</li>
+</ul>
+<p>All changes are merged into the main branch via pull requests.</p></p>
     </article>
 </section>
             <!-- endblock -->
