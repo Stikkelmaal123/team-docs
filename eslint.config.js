@@ -4,6 +4,8 @@ import globals from 'globals'
 import pluginVitest from '@vitest/eslint-plugin'
 import pluginCypress from 'eslint-plugin-cypress/flat'
 
+
+
 export default [
   {
     name: 'app/files-to-lint',
@@ -38,4 +40,21 @@ export default [
       'cypress/support/**/*.{js,ts,jsx,tsx}'
     ],
   },
+
+  {
+    rules: {
+      'comma-dangle': ['error', 'always-multiline'],
+      eqeqeq: ['error', 'always'],
+      indent: ['error', 2],
+      'no-eval': ['error'],
+      'no-trailing-spaces': ['error'],
+      'no-unused-vars': ['error'],
+      'no-var': ['error'],
+      'prefer-const': ['error'],
+      quotes: ['error', 'single'],
+      semi: ['error', 'always'],
+    },
+  }, 
 ]
+
+
