@@ -69,8 +69,13 @@ export default [
       "no-unused-vars": ["error"],
       "no-var": ["error"],
       "prefer-const": ["error"],
+      "no-console": ["warn", { allow: ["warn", "error"] }],
+      complexity: ["warn", { max: 20 }],
+      "no-param-reassign": ["error"],
       quotes: ["error", "double"],
       semi: ["error", "always"],
+      "vue/component-name-in-template-casing": ["error", "PascalCase"],
+      "vue/no-unused-components": ["error"],
     },
   },
 ];
