@@ -13,12 +13,28 @@ export default [
   {
     name: "app/files-to-ignore",
     ignores: [
-      "**/dist/**",
-      "**/dist-ssr/**",
-      "**/coverage/**",
-      "**/node_modules/**", // Ignore node_modules
-      "**/build/**", // Ignore build folder
-      "**/*.min.js", // Ignore minified JavaScript files
+      "**/dist/**", // Build output
+      "**/dist-ssr/**", // Server-side rendered build output
+      "**/coverage/**", // Test coverage reports
+      "**/node_modules/**", // Dependencies
+      "**/build/**", // Build folder
+      "**/*.min.js", // Minified JavaScript files
+      "**/.cache/**", // Cache files
+      "**/temp/**", // Temporary files
+      "**/.env", // Environment variables
+      "**/.env.*", // Environment variables with extensions
+      "**/*.log", // Log files
+      "**/.vscode/**", // VSCode settings
+      "**/.idea/**", // IntelliJ IDEA settings
+      "**/cypress/videos/**", // Cypress videos
+      "**/cypress/screenshots/**", // Cypress screenshots
+      "**/cypress/fixtures/**", // Cypress fixtures
+      "**/cypress/support/**", // Cypress support files
+      "**/test-output/**", // Test output
+      "**/reports/**", // Reports
+      "**/*.generated.*", // Generated files
+      "**/*.bak", // Backup files
+      "**/*.config.*", // Configuration files
     ],
   },
 
@@ -53,7 +69,7 @@ export default [
       "no-unused-vars": ["error"],
       "no-var": ["error"],
       "prefer-const": ["error"],
-      quotes: ["error", "single"],
+      quotes: ["error", "double"],
       semi: ["error", "always"],
     },
   },
