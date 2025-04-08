@@ -6,4 +6,4 @@ We are coolios mcmuffin
 
     -Luana (Rage Gamer)
     -Xander (Gage Ramer)
-    -Mikkel (Remag Egar)
+    -Mikkel (Pooper)
