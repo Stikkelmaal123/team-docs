@@ -3,10 +3,10 @@ name: Deploy MKDocs
 on:
   push:
     branches:
-      - main
+      - github-pages
   pull_request:
     branches:
-      - main
+      - github-pages
 
 jobs:
   deploy:
