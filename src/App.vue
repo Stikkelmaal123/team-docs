@@ -4,10 +4,10 @@ import TopBar from '@/components/TopBar.vue'
 </script>
 
 <template>
-    <div class="layout">
-      <SideNav />
-      <div class="layout__main">
-        <TopBar />
+    <div class="app">
+      <TopBar />
+      <div class="layout">
+        <SideNav />
         <div class="layout__content">
           <router-view />
         </div>
@@ -17,21 +17,22 @@ import TopBar from '@/components/TopBar.vue'
 
 <style scoped>
 
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
 .layout {
   display: flex;
-  height: 100vh;
+  flex: 1;
+  background-color: var(--background-color);
+  overflow: hidden;
+}
 
-  &__main {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    background-color: var(--background-color);
-  }
-
-  &__content {
-    flex: 1;
-    padding: var(--padding);
-    overflow-y: auto;
-  }
+.layout__content {
+  flex: 1;
+  padding: var(--padding);
+  overflow-y: auto;
 }
 </style>
