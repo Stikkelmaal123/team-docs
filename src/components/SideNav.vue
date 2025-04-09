@@ -1,27 +1,11 @@
 <script setup>
 import "@/assets/main.scss";
+
 </script>
 
 <template>
-   <div class="sidebar">
-    <div class="sidebar__menu">
-      <div class="sidebar__item">
-      </div>
-      <div class="sidebar__item">
-      </div>
-      <div class="sidebar__item">
-      </div>
-      <div class="sidebar__item">
-      </div>
-      <div class="sidebar__item">
-      </div>
-      <div class="sidebar__item">
-      </div>
-      <div class="sidebar__item">
-        <router-link to="/calendar" class="sidebar__link">Kalender</router-link>
-      </div>
-      <div class="sidebar__item">
-      </div>
-    </div>
+    <div class="sidenav">
+    <router-link to="/" class="sidenav__link">Home</router-link>
+    <router-link to="/calendar" class="sidenav__link">Calendar</router-link>
   </div>
 </template>

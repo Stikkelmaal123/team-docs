@@ -1,13 +1,15 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
-import { Sidebar } from "./components/SideNav.vue";
+import SideNav from '@/components/SideNav.vue'
 </script>
 
 <template>
-    <div class="app">
-        <Sidebar />
+    <div class="layout">
+      <SideNav />
+      <div class="layout__content">
         <router-view />
-    </div>    
-</template>
+      </div>
+    </div>
+  </template>
 
-<style scoped></style>
+<style scoped>
+</style>

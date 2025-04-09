@@ -1,16 +1,13 @@
 <script setup>
-import { SideNav } from "@/components/SideNav.vue";
 
 </script>
 
 
 <template>
-    <div class="calender-view__content">
-        <SideNav />
-        <div class="calender-view__main">
-            <h1>Kalender</h1>
-        </div>
-    </div>    
+    <div class="calendar-view">
+        <h1>Calendar Page</h1>
+        <CalendarComponent />
+  </div>  
 </template>
 
 
