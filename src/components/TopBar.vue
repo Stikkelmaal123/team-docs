@@ -3,10 +3,10 @@
 
 <template>
     <header class="topbar">
-      <div class="topbar__left">
+      <div class="topbar__logo-section">
         <h1 class="topbar__logo">Egenkontrol</h1>
       </div>
-      <div class="topbar__right">
+      <div class="topbar__main-section">
         <div class="topbar__search-wrapper">
           <input type="text" class="topbar__search" placeholder="Søg i alt" />
         </div>

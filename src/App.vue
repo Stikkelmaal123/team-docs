@@ -8,9 +8,9 @@ import TopBar from '@/components/TopBar.vue'
       <TopBar />
       <div class="layout">
         <SideNav />
-        <div class="layout__content">
+        <main class="layout__content">
           <router-view />
-        </div>
+        </main>
       </div>
     </div>
   </template>
@@ -18,17 +18,19 @@ import TopBar from '@/components/TopBar.vue'
 <style scoped>
 
 .app {
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 }
 
 .layout {
   display: flex;
   flex: 1;
   overflow: hidden;
+}
+
+.layout__content {
+  flex: 1;
+  overflow-y: auto;
 }
 </style>
