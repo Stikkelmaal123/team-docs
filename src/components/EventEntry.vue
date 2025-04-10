@@ -1,3 +1,20 @@
+<script setup>
+defineProps({
+  title: {
+    type: String,
+    required: true,
+  },
+  location: {
+    type: String,
+    default: "",
+  },
+  timeRange: {
+    type: String,
+    required: true,
+  },
+});
+</script>
+
 <template>
   <div class="event-item">
     <div class="event-item__content">
@@ -20,23 +37,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String,
-    default: "",
-  },
-  timeRange: {
-    type: String,
-    required: true,
-  },
-});
-</script>
 
 <style lang="scss">
 @use "@/assets/main.scss" as *;

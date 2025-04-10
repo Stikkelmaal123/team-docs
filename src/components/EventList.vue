@@ -1,3 +1,18 @@
+<script setup>
+import { ref } from "vue";
+
+const isVisible = ref(true);
+
+const closeContainer = () => {
+  isVisible.value = false;
+};
+
+defineExpose({
+  isVisible,
+  closeContainer,
+});
+</script>
+
 <template>
   <div v-if="isVisible" class="event-list">
     <div class="event-list__header">
@@ -14,21 +29,6 @@
     </div>
   </div>
 </template>
-
-<script setup>
-import { ref } from "vue";
-
-const isVisible = ref(true);
-
-const closeContainer = () => {
-  isVisible.value = false;
-};
-
-defineExpose({
-  isVisible,
-  closeContainer,
-});
-</script>
 
 <style lang="scss">
 @use "@/assets/main.scss" as *;
