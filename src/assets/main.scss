@@ -131,14 +131,14 @@ body {
 .topbar {
   display: flex;
   width: 100%;
-  height: var(--header-height); /* Example: 4rem */
-  background-color: var(--topbar-background-color, white);
-  border-bottom: 0.13rem solid #4f9dd1;
+  height: 4.5rem;
+  background-color: var(--background-white);
+  border-bottom: 0.13rem solid var(--topmenu-blue);
 }
 
 .topbar__logo-section {
   width: 16rem;
-  background-color: #4f9dd1;
+  background-color: var(--topmenu-blue);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,10 +146,10 @@ body {
 }
 
 .topbar__logo {
-  color: white;
-  font-size: 2rem;
-  font-weight: bold;
-  background-color: #4f9dd1;
+  color: var(--background-white);
+  font-size: 2.5rem;
+  font-weight: 400;
+  background-color: var(--topmenu-blue);
 }
 
 .topbar__main-section {
@@ -190,7 +190,7 @@ body {
 
 .sidenav {
   width: 16rem;
-  background-color: white;
+  background-color: var(--background-white);
   height: 100vh;
   padding: var(--padding) 0;
   padding-top: 2rem;
@@ -206,7 +206,7 @@ body {
     align-items: center;
 
     &:hover {
-      background-color: var(--background-color);
+      background-color: var(--topmenu-blue);
     }
   }
 }
@@ -214,18 +214,30 @@ body {
 .sidenav__link {
   display: flex;
   align-items: center;
+  width: 100%; 
   white-space: nowrap;
+  height: 4rem; 
   overflow: hidden;
   text-overflow: ellipsis;
   gap: 1rem;
-  padding: 0.75rem 0.5rem;
+  padding: 0.75rem;
   color: var(--text-color);
   text-decoration: none;
   font-size: 1rem;
+  border: 1px solid transparent;
+  box-sizing: border-box; 
 
   &:hover {
-    background-color: var(--background-color);
+    background-color: #f2f2f2;
+    color: var(--primary-color); 
+    border: 0.13rem solid var(--topmenu-blue)
   }
+}
+
+.router-link-exact-active {
+  background-color: #ecf5fa;
+  border: 0.13rem solid var(--topmenu-blue);
+}
 
   img.sidenav__icon {
     width: 2rem;
@@ -233,4 +245,3 @@ body {
     margin-right: 1rem;
     object-fit: contain;
   }
-}
