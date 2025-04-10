@@ -1,3 +1,4 @@
+@use "sass:map";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
 $font-stack: "Roboto", sans-serif;
@@ -51,7 +52,7 @@ $colors: (
 
 // Helper function to access colors
 @function color($category, $name) {
-  @return map-get(map-get($colors, $category), $name);
+  @return map.get(map.get($colors, $category), $name);
 }
 
 // BEM Mixins
@@ -111,7 +112,8 @@ p {
 }
 
 //other styling :))
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100%;
@@ -120,7 +122,9 @@ html, body {
   background-color: #ecf5fa;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: inherit;
 }
 
@@ -210,10 +214,10 @@ html, body {
 .sidenav__link {
   display: flex;
   align-items: center;
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
-  gap: 1rem; 
+  text-overflow: ellipsis;
+  gap: 1rem;
   padding: 0.75rem 0.5rem;
   color: var(--text-color);
   text-decoration: none;
