@@ -11,10 +11,11 @@
           <input type="text" class="topbar__search" placeholder="Søg i alt" />
         </div>
         <div class="topbar__icons">
-          <img src="" alt="Notifications" class="topbar__icon" />
-          <img src="" alt="User" class="topbar__icon" />
-          <img src="" alt="Help" class="topbar__icon" />
-          <img src="" alt="Settings" class="topbar__icon" />
+          <img src="@/assets/icons/Notifications.png" alt="Notifications" class="topbar__icon" />
+          <img src="@/assets/icons/users.png" alt="User" class="topbar__icon" />
+          <img src="@/assets/icons/help.png" alt="Help" class="topbar__icon" />
+          <img src="@/assets/icons/Icons.png" alt="Icon" class="topbar__icon" />
+          <img src="@/assets/icons/Export.png" alt="Export" class="topbar__icon" />
         </div>
       </div>
     </header>
