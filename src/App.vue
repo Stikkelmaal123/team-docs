@@ -18,21 +18,17 @@ import TopBar from '@/components/TopBar.vue'
 <style scoped>
 
 .app {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
 }
 
 .layout {
   display: flex;
   flex: 1;
-  background-color: var(--background-color);
   overflow: hidden;
-}
-
-.layout__content {
-  flex: 1;
-  padding: var(--padding);
-  overflow-y: auto;
 }
 </style>

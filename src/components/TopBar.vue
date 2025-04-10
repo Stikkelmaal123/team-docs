@@ -2,19 +2,23 @@
 </script>
 
 <template>
-   <header class="topbar">
-  <div class="topbar__left">
-    <h1 class="topbar__logo">Egenkontrol</h1>
-  </div>
-  <div class="topbar__center">
-    <input type="text" class="topbar__search" placeholder="Søg i alt" />
-  </div>
-  <div class="topbar__right">
-    <i class="topbar__icon">🔔</i>
-    <i class="topbar__icon">👤</i>
-    <i class="topbar__icon">❓</i>
-    <i class="topbar__icon">⚙️</i>
-  </div>
-</header>
+    <header class="topbar">
+      <div class="topbar__left">
+        <h1 class="topbar__logo">Egenkontrol</h1>
+      </div>
+      <div class="topbar__right">
+        <div class="topbar__search-wrapper">
+          <input type="text" class="topbar__search" placeholder="Søg i alt" />
+        </div>
+        <div class="topbar__icons">
+          <img src="" alt="Notifications" class="topbar__icon" />
+          <img src="" alt="User" class="topbar__icon" />
+          <img src="" alt="Help" class="topbar__icon" />
+          <img src="" alt="Settings" class="topbar__icon" />
+        </div>
+      </div>
+    </header>
   </template>
+  
+  
   
