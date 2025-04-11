@@ -1,10 +1,20 @@
 <script setup>
-import SideNav from '@/components/SideNav.vue'
-import TopBar from '@/components/TopBar.vue'
+import { ref } from "vue";
+import SideNav from "@/components/SideNav.vue";
+import TopBar from "@/components/TopBar.vue";
+import LoginLandingPage from "@/views/LoginLandingPage.vue";
+
+const loggedIn = ref(false);
+
+const handleLogin = () => {
+  loggedIn.value = true;
+};
 </script>
 
 <template>
-    <div class="app">
+  <div class="app">
+
+    <template v-if="loggedIn">
       <TopBar />
       <div class="layout">
         <SideNav />
@@ -12,8 +22,13 @@ import TopBar from '@/components/TopBar.vue'
           <router-view />
         </main>
       </div>
-    </div>
-  </template>
+    </template>
+
+    <template v-else>
+      <LoginLandingPage @login="handleLogin" />
+    </template>
+  </div>
+</template>
 
 <style scoped>
 
