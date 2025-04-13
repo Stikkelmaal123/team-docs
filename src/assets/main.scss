@@ -245,3 +245,69 @@ body {
     margin-right: 1rem;
     object-fit: contain;
   }
+
+  .calendar-page {
+    padding: 2rem;
+    background-color: var(--background-color);
+    height: 100%;
+    box-sizing: border-box;
+  
+    &__filters {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+  
+    &__filter {
+      background: white;
+      border: 1px solid var(--border-color);
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+  
+      &.active {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+      }
+  
+      &:hover {
+        background-color: rgba(60, 133, 197, 0.1);
+      }
+    }
+  
+    &__title {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: var(--text-color);
+    }
+  
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr); 
+      gap: 1px; 
+      background-color: var(--border-color); 
+      border: 1px solid var(--border-color);
+    }
+  
+    &__day {
+      background: white;
+      min-height: 100px; 
+      padding: 0.5rem;
+      box-sizing: border-box;
+      position: relative;
+    }
+  
+    &__day-number {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-color);
+      font-weight: bold;
+    }
+  }
