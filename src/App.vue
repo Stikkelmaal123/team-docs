@@ -13,7 +13,6 @@ const handleLogin = () => {
 
 <template>
   <div class="app">
-
     <template v-if="loggedIn">
       <TopBar />
       <div class="layout">
@@ -31,7 +30,6 @@ const handleLogin = () => {
 </template>
 
 <style scoped>
-
 .app {
   display: flex;
   flex-direction: column;

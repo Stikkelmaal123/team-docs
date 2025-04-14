@@ -12,6 +12,10 @@ defineProps({
     type: String,
     required: true,
   },
+  onEdit: {
+    type: Function,
+    default: () => {},
+  },
 });
 </script>
 
@@ -24,7 +28,7 @@ defineProps({
           <div class="event-item__time">{{ timeRange }}</div>
           <div class="event-item__actions">
             <button class="event-item__edit-btn">
-              <img src="@/assets/icons/Edit.png" alt="Edit" />
+              <img src="@/assets/icons/Edit.png" alt="Edit" @click="onEdit" />
             </button>
           </div>
         </div>
