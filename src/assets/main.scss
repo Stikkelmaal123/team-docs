@@ -246,32 +246,39 @@ body {
     object-fit: contain;
   }
 
-  .calendar-page {
+  .calendar {
+    &__header {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+  
     &__grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 1px;
-      background-color: var(--primary-color);
+      background-color: var(--blue-border);
       border-radius: var(--border-radius);
       overflow: hidden;
-      margin-top: 1rem;
       max-width: 900px;
-      border: 1px solid var(--primary-color);
+      border: 1px solid var(--blue-border);
     }
   
-    &__day {
+    &__cell {
       background-color: white;
+      padding: 1.5rem;
       min-height: 100px;
-      padding: 0.5rem;
-      font-size: 0.9rem;
+      border: 1px solid var(--blue-border);
+      font-weight: 500;
       position: relative;
+    }
   
-      &--today {
-        outline: 3px solid var(--primary-color);
-        outline-offset: -3px;
-        font-weight: bold;
-        background-color: #eaf4ff;
-      }
+    &__cell--grey {
+      background-color: #f5f5f5;
+      color: #aaa;
+    }
+  
+    &__cell--today {
+      border: 2px solid #7f3fbf;
     }
   }
  

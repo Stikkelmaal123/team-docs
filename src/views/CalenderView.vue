@@ -2,61 +2,68 @@
 import { ref, computed } from 'vue'
 
 const today = new Date()
-const currentDay = today.getDate()
-const currentMonth = ref(2) // March (0-based)
-const currentYear = ref(2025)
+const year = today.getFullYear()
+const month = today.getMonth()
 
-const monthNames = [
-  'Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni',
-  'Juli', 'August', 'September', 'Oktober', 'November', 'December'
-]
+const monthName = computed(() =>
+  today.toLocaleString('default', { month: 'long' })
+)
 
-const currentMonthName = computed(() => monthNames[currentMonth.value])
+function generateCalendar(year, month) {
+  const days = []
 
-const daysInMonth = computed(() => {
-  const days = new Date(currentYear.value, currentMonth.value + 1, 0).getDate()
-  return Array.from({ length: days }, (_, i) => i + 1)
-})
+  const firstDay = new Date(year, month, 1)
+  const lastDay = new Date(year, month + 1, 0)
+  const startDayOfWeek = firstDay.getDay() // 0-6
+  const daysInMonth = lastDay.getDate()
 
-const startDayOffset = computed(() => {
-  const date = new Date(currentYear.value, currentMonth.value, 1)
-  const day = date.getDay()
-  return day === 0 ? 6 : day - 1
-})
+  // Previous month filler
+  const prevLastDate = new Date(year, month, 0).getDate()
+  for (let i = startDayOfWeek - 1; i >= 0; i--) {
+    days.push({ date: prevLastDate - i, isCurrentMonth: false })
+  }
 
-// Compute today status inside the loop
-const isToday = (day) => {
-  return (
-    day === currentDay &&
-    currentMonth.value === today.getMonth() &&
-    currentYear.value === today.getFullYear()
-  )
+  // Current month days
+  for (let i = 1; i <= daysInMonth; i++) {
+    days.push({
+      date: i,
+      isCurrentMonth: true,
+      isToday:
+        i === today.getDate() &&
+        month === today.getMonth() &&
+        year === today.getFullYear()
+    })
+  }
+
+  // Fill to 6 full weeks (42 cells)
+  while (days.length < 42) {
+    days.push({
+      date: days.length - daysInMonth - startDayOfWeek + 1,
+      isCurrentMonth: false
+    })
+  }
+
+  return days
 }
+
+const calendarDays = ref(generateCalendar(year, month))
 </script>
 
 
 <template>
-  <div class="calendar-page">
-    <h2 class="calendar-page__title">{{ currentMonthName }} {{ currentYear }}</h2>
-
-    <div class="calendar-page__calendar">
-      <div class="calendar-page__calendar-grid">
-        <!-- Empty cells before day 1 -->
-        <div
-          v-for="n in startDayOffset"
-          :key="'empty-' + n"
-          :class="['calendar-page__day', { 'calendar-page__day--today': isToday(day) }]">
-           {{ day }}
-        </div>
-
-        <!-- Days of the month -->
-        <div
-          v-for="day in daysInMonth"
-          :key="day"
-          class="calendar-page__day"
-        >
-          {{ day }}
-        </div>
+  <div class="calendar">
+    <h2 class="calendar__header">{{ monthName }} {{ year }}</h2>
+    <div class="calendar__grid">
+      <div
+        v-for="(day, index) in calendarDays"
+        :key="index"
+        :class="[
+          'calendar__cell',
+          !day.isCurrentMonth && 'calendar__cell--grey',
+          day.isToday && 'calendar__cell--today'
+        ]"
+      >
+        {{ day.date }}
       </div>
     </div>
   </div>
