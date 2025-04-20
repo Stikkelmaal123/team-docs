@@ -247,60 +247,40 @@ body {
   }
 
   .calendar-page {
-    padding: 2rem;
-    background-color: var(--background-light);
-   
-    &__container {
-      max-width: 900px;
-      margin-left: 2rem;
-    }  
+    margin-left: 1rem;
   
     &__title {
       font-size: 2rem;
-      font-weight: bold;
       margin-bottom: 1rem;
     }
   
-    &__grid {
+    &__calendar {
+      border: 10px solid var(--primary-color);
+      border-radius: 0.5rem;
+      background-color: white;
+      overflow: hidden;
+      width: fit-content;
+    }
+  
+    &__calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       background-color: var(--topmenu-blue);
       gap: 1px;
-      border: 0.13rem solid var(--topmenu-blue);
-      border-top: 1rem solid var(--topmenu-blue);
-      border-radius: 0.5rem;
-      overflow: hidden;
-      
     }
   
     &__day {
       background-color: white;
-      padding: 0.5rem;
-      height: 110px;
+      min-height: 100px;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      align-items: flex-start;
+      justify-content: flex-start;
       padding: 0.5rem;
-    
-    
-      &--highlighted {
-        border: 2px solid #9c4ed4;
+      font-size: 0.9rem;
+  
+      &--empty {
+        background-color: #f5f5f5;
       }
-    }
-  
-    &__day-number {
-      font-weight: bold;
-    }
-  
-    &__event {
-      font-size: 0.75rem;
-      background-color: #f0f8f4;
-      color: #1c4c33;
-      padding: 0.25rem 0.5rem;
-      border-radius: var(--border-radius);
-      border: 1px solid #1c4c33;
-      font-weight: 500;
-      width: fit-content;
     }
   }
  
