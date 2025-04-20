@@ -1,13 +1,16 @@
 <script setup>
 import { ref, computed } from 'vue'
 
-const currentMonth = ref(2) // March (0-based index)
+const today = new Date()
+const currentDay = today.getDate()
+const currentMonth = ref(2) // March (0-based)
 const currentYear = ref(2025)
 
 const monthNames = [
   'Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni',
   'Juli', 'August', 'September', 'Oktober', 'November', 'December'
 ]
+
 const currentMonthName = computed(() => monthNames[currentMonth.value])
 
 const daysInMonth = computed(() => {
@@ -18,8 +21,17 @@ const daysInMonth = computed(() => {
 const startDayOffset = computed(() => {
   const date = new Date(currentYear.value, currentMonth.value, 1)
   const day = date.getDay()
-  return day === 0 ? 6 : day - 1 // convert so Mon=0, Sun=6
+  return day === 0 ? 6 : day - 1
 })
+
+// Compute today status inside the loop
+const isToday = (day) => {
+  return (
+    day === currentDay &&
+    currentMonth.value === today.getMonth() &&
+    currentYear.value === today.getFullYear()
+  )
+}
 </script>
 
 
@@ -33,8 +45,9 @@ const startDayOffset = computed(() => {
         <div
           v-for="n in startDayOffset"
           :key="'empty-' + n"
-          class="calendar-page__day calendar-page__day--empty"
-        ></div>
+          :class="['calendar-page__day', { 'calendar-page__day--today': isToday(day) }]">
+           {{ day }}
+        </div>
 
         <!-- Days of the month -->
         <div
