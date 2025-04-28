@@ -4,7 +4,7 @@ import SideNav from "@/components/SideNav.vue";
 import TopBar from "@/components/TopBar.vue";
 import LoginView from "@/views/LoginView.vue";
 
-const loggedIn = ref(false);
+const loggedIn = ref(true);
 
 const handleLogin = () => {
   loggedIn.value = true;

@@ -84,6 +84,7 @@ defineExpose({
 
 <style lang="scss">
 @use "@/assets/main.scss" as *;
+@use "sass:color";
 
 .event-edit {
   position: relative;
@@ -168,7 +169,7 @@ defineExpose({
       color: var(--background-white);
 
       &:hover {
-        background-color: darken(#97ce75, 10%);
+        background-color: color.adjust(#97ce75, $lightness: -10%);
       }
     }
 
