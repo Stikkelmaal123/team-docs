@@ -2,7 +2,7 @@
 import { ref } from "vue";
 import SideNav from "@/components/SideNav.vue";
 import TopBar from "@/components/TopBar.vue";
-import LoginLandingPage from "@/views/LoginLandingPage.vue";
+import LoginView from "@/views/LoginView.vue";
 
 const loggedIn = ref(false);
 
@@ -24,12 +24,13 @@ const handleLogin = () => {
     </template>
 
     <template v-else>
-      <LoginLandingPage @login="handleLogin" />
+      <LoginView @login="handleLogin" />
     </template>
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@use "@/assets/main.scss" as *;
 .app {
   display: flex;
   flex-direction: column;
@@ -40,10 +41,11 @@ const handleLogin = () => {
   display: flex;
   flex: 1;
   overflow: hidden;
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+  }
 }
 
-.layout__content {
-  flex: 1;
-  overflow-y: auto;
-}
 </style>
