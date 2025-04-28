@@ -1,14 +1,29 @@
 <script setup>
 import { ref } from "vue";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/firebase";
 import SideNav from "@/components/SideNav.vue";
 import TopBar from "@/components/TopBar.vue";
 import LoginView from "@/views/LoginView.vue";
 
 const loggedIn = ref(false);
+const role = ref(null);
 
-const handleLogin = () => {
-  loggedIn.value = true;
-};
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    loggedIn.value = true;
+      if (user.email === "john@doe.com") {
+        role.value = "admin";
+      }  
+      else {
+        role.value = "viewer";
+      } 
+    }
+    else {
+    loggedIn.value = false;
+    role.value = null;
+  }
+});
 </script>
 
 <template>
@@ -16,7 +31,7 @@ const handleLogin = () => {
     <template v-if="loggedIn">
       <TopBar />
       <div class="layout">
-        <SideNav />
+        <SideNav  v-if="role === 'admin'" />
         <main class="layout__content">
           <router-view />
         </main>
