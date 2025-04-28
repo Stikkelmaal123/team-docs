@@ -1,14 +1,21 @@
 <script setup>
 import { ref } from "vue";
-
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/firebase";
 
 const email = ref("");
 const password = ref("");
 
 const emit = defineEmits(["login"]);
 
-const doLogin = () => {
-  emit("login");
+const doLogin = async () => {
+  try {
+    await signInWithEmailAndPassword(auth, email.value, password.value);
+    emit("login");
+  } catch (error) {
+    console.error("Login failed:", error);
+    alert("Login failed. Please check your credentials.");
+  }
 };
 </script>
 
