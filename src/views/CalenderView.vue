@@ -84,6 +84,5 @@ const calendarDays = ref(generateCalendar(year, month));
   display: flex;
   gap: 16px;
   padding: 20px;
-  import companyIcon from "@/assets/icons/Company.png";
-  import usersIcon from "@/assets/icons/users.png";}
+}
 </style>
