@@ -20,7 +20,7 @@ const events = ref([
 ]);
 
 const eventEditRef = ref(null);
-const openEditor = (eventID) => {
+const openEditor = () => {
   eventEditRef.value.isVisible = true;
 };
 </script>

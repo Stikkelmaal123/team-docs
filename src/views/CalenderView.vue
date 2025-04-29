@@ -31,7 +31,7 @@ const year = today.getFullYear();
 const month = today.getMonth();
 
 const monthName = computed(() =>
-  today.toLocaleString("default", { month: "long" })
+  today.toLocaleString("default", { month: "long" }),
 );
 
 function generateCalendar(year, month) {
@@ -39,13 +39,13 @@ function generateCalendar(year, month) {
 
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
-  const startDayOfWeek = firstDay.getDay(); 
+  const startDayOfWeek = firstDay.getDay();
   const daysInMonth = lastDay.getDate();
 
   // Previous month filler
   const prevLastDate = new Date(year, month, 0).getDate();
   for (let i = startDayOfWeek - 1; i >= 0; i--) {
-    days.push({ date: prevLastDate - i, isCurrentMonth: false })
+    days.push({ date: prevLastDate - i, isCurrentMonth: false });
   };
 
   // Current month days
@@ -56,22 +56,22 @@ function generateCalendar(year, month) {
       isToday:
         i === today.getDate() &&
         month === today.getMonth() &&
-        year === today.getFullYear()
-    })
+        year === today.getFullYear(),
+    });
   };
 
   // Fill to 6 full weeks (42 cells)
   while (days.length < 42) {
     days.push({
       date: days.length - daysInMonth - startDayOfWeek + 1,
-      isCurrentMonth: false
-    })
+      isCurrentMonth: false,
+    });
   };
 
-  return days
+  return days;
 };
 
-const calendarDays = ref(generateCalendar(year, month))
+const calendarDays = ref(generateCalendar(year, month));
 </script>
 
 
