@@ -12,14 +12,14 @@ const role = ref(null);
 onAuthStateChanged(auth, (user) => {
   if (user) {
     loggedIn.value = true;
-      if (user.email === "john@doe.com") {
-        role.value = "admin";
-      }  
-      else {
-        role.value = "viewer";
-      } 
+    if (user.email === "john@doe.com") {
+      role.value = "admin";
     }
     else {
+      role.value = "viewer";
+    }
+  }
+  else {
     loggedIn.value = false;
     role.value = null;
   }
