@@ -17,7 +17,7 @@ function handleClick() {
 
 <template>
   <div
-    class="calendar-day"
+    class="calendar__cell"
     :class="{ empty: !day }"
     @click="handleClick"
   >

@@ -13,7 +13,7 @@ function handleSelectDay(day) {
 
 
 <template>
-  <div class="calendar">
+  <div class="calendar__grid">
     <DayCell
       v-for="(day, index) in daysInMonth"
       :key="index"

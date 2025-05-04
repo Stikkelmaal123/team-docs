@@ -12,9 +12,9 @@ const monthName = computed(() => {
 
 
 <template>
-  <div class="calendar-header">
+  <div class="calendar">
     <button @click="prevMonth" class="calendar-nav-button">←</button>
-    <h2 class="calendar-title">
+    <h2 class="calendar__header">
       {{ monthName }} {{ currentYear }}
     </h2>
     <button @click="nextMonth" class="calendar-nav-button">→</button>
