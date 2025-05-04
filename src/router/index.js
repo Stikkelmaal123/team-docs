@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "@/views/HomeView.vue";
-import CalenderView from "@/views/CalenderView.vue";
+import CalendarView from "@/views/CalendarView.vue";
 import TestView from "@/views/TestView.vue";
 
 const router = createRouter({
@@ -14,7 +14,7 @@ const router = createRouter({
     {
       path: "/calendar",
       name: "calendar",
-      component: CalenderView,
+      component: CalendarView,
     },
     {
       path: "/test", // URL path to access TestView
