@@ -5,6 +5,7 @@ import EventEntry from "@/components/EventEntry.vue";
 import EventEntryAdd from "@/components/EventEntryAdd.vue";
 import FilterComponent from "@/components/FilterComponent.vue";
 import EventEdit from "@/components/EventEdit.vue";
+import EventCreate from "@/components/EventCreate.vue";
 
 import companyIcon from "@/assets/icons/Company.png";
 import usersIcon from "@/assets/icons/users.png";
@@ -20,8 +21,12 @@ const events = ref([
 ]);
 
 const eventEditRef = ref(null);
-const openEditor = () => {
+const eventCreateRef = ref(null);
+const openEditor = (eventID) => {
   eventEditRef.value.isVisible = true;
+};
+const openCreator = () => {
+  eventCreateRef.value.isVisible = true;
 };
 </script>
 
@@ -40,9 +45,10 @@ const openEditor = () => {
       :timeRange="event.timeRange"
       :onEdit="openEditor"
     />
-    <EventEntryAdd />
+    <EventEntryAdd :onCreate="openCreator" />
   </EventList>
   <EventEdit ref="eventEditRef" />
+  <EventCreate ref="eventCreateRef" />
 </template>
 
 <style lang="scss">

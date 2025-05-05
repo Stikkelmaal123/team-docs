@@ -14,12 +14,10 @@ onAuthStateChanged(auth, (user) => {
     loggedIn.value = true;
     if (user.email === "john@doe.com") {
       role.value = "admin";
-    }
-    else {
+    } else {
       role.value = "viewer";
     }
-  }
-  else {
+  } else {
     loggedIn.value = false;
     role.value = null;
   }
@@ -31,7 +29,7 @@ onAuthStateChanged(auth, (user) => {
     <template v-if="loggedIn">
       <TopBar />
       <div class="layout">
-        <SideNav  v-if="role === 'admin'" />
+        <SideNav v-if="role === 'admin'" />
         <main class="layout__content">
           <router-view />
         </main>

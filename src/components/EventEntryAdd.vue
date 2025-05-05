@@ -1,9 +1,16 @@
-<script setup></script>
+<script setup>
+defineProps({
+  onCreate: {
+    type: Function,
+    required: true,
+  },
+});
+</script>
 
 <template>
   <div class="event-list__add">
     <button class="event-list__add-btn">
-      <img src="@/assets/icons/Add.png" alt="Add new event icon" />
+      <img src="@/assets/icons/Add.png" alt="Add new event icon" @click="onCreate" />
     </button>
   </div>
 </template>
