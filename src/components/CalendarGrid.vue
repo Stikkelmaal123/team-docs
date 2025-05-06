@@ -1,6 +1,6 @@
 <script setup>
-import { useCalendar } from "../composables/useCalendar";
-import DayCell from "./DayCell.vue";
+import { useCalendar } from "@/composables/useCalendar";
+import DayCell from "@/components/DayCell.vue";
 
 const { daysInMonth } = useCalendar();
 const emit = defineEmits(["select-day"]);

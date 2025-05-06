@@ -1,5 +1,29 @@
 <script setup>
 import { ref } from "vue";
+import EventEntry from "@/components/EventEntry.vue";
+import EventEntryAdd from "@/components/EventEntryAdd.vue";
+import EventEdit from "@/components/EventEdit.vue";
+import EventCreate from "@/components/EventCreate.vue";
+
+// Some mocky data for now
+const events = ref([
+  {
+    id: 1,
+    title: "Check Døre",
+    location: "UCL Niels Bohrs Allé",
+    timeRange: "11:15 - 11:30",
+  },
+]);
+
+const eventEditRef = ref(null);
+const eventCreateRef = ref(null);
+const openEditor = (eventID) => {
+  eventEditRef.value.isVisible = true;
+};
+const openCreator = () => {
+  eventCreateRef.value.isVisible = true;
+};
+
 const isVisible = ref(true);
 
 const closeContainer = () => {
@@ -28,6 +52,17 @@ defineExpose({
       <slot></slot>
     </div>
   </div>
+  <EventEntry
+      v-for="event in events"
+      :key="event.id"
+      :title="event.title"
+      :location="event.location"
+      :timeRange="event.timeRange"
+      :onEdit="openEditor"
+    />
+    <EventEntryAdd :onCreate="openCreator" />
+  <EventEdit ref="eventEditRef" />
+  <EventCreate ref="eventCreateRef" />
 </template>
 
 <style lang="scss">
