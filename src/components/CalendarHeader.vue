@@ -1,6 +1,6 @@
 <script setup>
 import { computed } from "vue";
-import { useCalendar } from "../composables/useCalendar";
+import { useCalendar } from "@/composables/useCalendar";
 
 const { currentMonth, currentYear, nextMonth, prevMonth } = useCalendar();
 
