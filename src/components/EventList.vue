@@ -2,6 +2,8 @@
 import { ref } from "vue";
 const isVisible = ref(true);
 
+const props = defineProps({ day: Date });
+
 const closeContainer = () => {
   isVisible.value = false;
 };
