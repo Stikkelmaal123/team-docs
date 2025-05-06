@@ -49,10 +49,7 @@ defineExpose({
       />
     </div>
     <div class="event-list__content">
-      <slot></slot>
-    </div>
-  </div>
-  <EventEntry
+      <EventEntry
       v-for="event in events"
       :key="event.id"
       :title="event.title"
@@ -63,6 +60,8 @@ defineExpose({
     <EventEntryAdd :onCreate="openCreator" />
   <EventEdit ref="eventEditRef" />
   <EventCreate ref="eventCreateRef" />
+    </div>
+  </div>
 </template>
 
 <style lang="scss">
