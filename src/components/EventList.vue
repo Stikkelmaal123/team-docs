@@ -40,7 +40,7 @@ defineExpose({
 <template>
   <div v-if="isVisible" class="event-list">
     <div class="event-list__header">
-      <h2 class="event-list__title">Events for</h2>
+      <h2 class="event-list__title">Daglige Events</h2>
       <img
         src="@/assets/icons/Close.png"
         alt="Close"
