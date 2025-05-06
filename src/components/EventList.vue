@@ -2,8 +2,6 @@
 import { ref } from "vue";
 const isVisible = ref(true);
 
-const props = defineProps({ day: Date });
-
 const closeContainer = () => {
   isVisible.value = false;
 };
@@ -18,7 +16,7 @@ defineExpose({
 <template>
   <div v-if="isVisible" class="event-list">
     <div class="event-list__header">
-      <h2 class="event-list__title">Events for {{ day.toDateString() }}</h2>
+      <h2 class="event-list__title">Events for</h2>
       <img
         src="@/assets/icons/Close.png"
         alt="Close"
