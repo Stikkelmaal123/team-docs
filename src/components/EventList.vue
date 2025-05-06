@@ -5,6 +5,9 @@ import EventEntryAdd from "@/components/EventEntryAdd.vue";
 import EventEdit from "@/components/EventEdit.vue";
 import EventCreate from "@/components/EventCreate.vue";
 
+const props = defineProps({
+  day: Date,
+});
 // Some mocky data for now
 const events = ref([
   {
@@ -40,7 +43,7 @@ defineExpose({
 <template>
   <div v-if="isVisible" class="event-list">
     <div class="event-list__header">
-      <h2 class="event-list__title">Daglige Events</h2>
+      <h2 class="event-list__title" v-if="day"> Events for {{ day.toDateString() }}</h2>
       <img
         src="@/assets/icons/Close.png"
         alt="Close"

@@ -5,6 +5,7 @@ import CalendarGrid from "@/components/CalendarGrid.vue";
 import EventList from "@/components/EventList.vue";
 
 const selectedDay = ref(null);
+
 function openModal(day) {
   selectedDay.value = day;
 }
