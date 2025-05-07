@@ -49,7 +49,6 @@ const saveChanges = async () => {
       location: selectedLocation.value,
       user: selectedUser.value,
       object: selectedObject.value,
-      createdAt: serverTimestamp(),
     };
 
     const eventsRef = collection(db, "events");
