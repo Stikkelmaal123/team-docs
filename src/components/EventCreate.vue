@@ -1,7 +1,7 @@
 <script setup>
-import { ref } from "vue";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { db } from "@/firebase"; // Make sure path is correct
+import { ref, onMounted } from "vue";
+import { collection, addDoc, serverTimestamp, getDoc, doc } from "firebase/firestore";
+import { db } from "@/firebase";
 import DateInput from "@/components/DateInput.vue";
 import DropdownSelector from "@/components/DropdownSelector.vue";
 
@@ -14,20 +14,45 @@ const selectedUser = ref("");
 const selectedObject = ref("");
 const isLoading = ref(false);
 
-//Mocky-mocks for now
-const scheduleOptions = ["Schedule-test-1", "Schedule-test-2"];
-const locationOptions = ["UCL", "Pound Town"];
-const userOptions = ["Users-1", "User-2"];
-const objectOptions = ["Woman-1", "Woman-2"];
+const options = ref({
+  schedules: [],
+  locations: [],
+  users: [],
+  objects: [],
+});
+const isLoadingOptions = ref(true);
+const errorMessage = ref("");
 
-const closeContainer = () => {
-  isVisible.value = false;
+const fetchOptionsFromFirestore = async () => {
+  try {
+    isLoadingOptions.value = true;
+    errorMessage.value = "";
+
+    const collections = ["schedules", "locations", "users", "objects"];
+
+    await Promise.all(
+      collections.map(async (collectionName) => {
+        const docSnapshot = await getDoc(doc(db, "data", collectionName));
+        if (docSnapshot.exists()) {
+          options.value[collectionName] = Object.values(docSnapshot.data() || {});
+        } else {
+          options.value[collectionName] = [];
+        }
+      })
+    );
+  } catch (error) {
+    console.error("Error fetching options:", error);
+    errorMessage.value = "Kunne ikke hente data fra databasen: " + (error.message || "Ukendt fejl");
+  } finally {
+    isLoadingOptions.value = false;
+  }
 };
+
+onMounted(fetchOptionsFromFirestore);
 
 const formatDateForFirestore = (dateString) => {
   if (!dateString) return null;
   const [day, month, year] = dateString.split("/").map(Number);
-  // (months are 0-indexed in JS)
   const date = new Date(year, month - 1, day);
   return isNaN(date.getTime()) ? null : date;
 };
@@ -36,26 +61,24 @@ const saveChanges = async () => {
   try {
     isLoading.value = true;
     const formattedStartDate = formatDateForFirestore(startDate.value);
-    const formattedEndDate = formatDateForFirestore(endDate.value);
+
     if (!formattedStartDate) {
       alert("Invalid start date format. Please use dd/mm/yyyy");
       return;
     }
 
-    const eventData = {
+    await addDoc(collection(db, "events"), {
       startDate: formattedStartDate,
-      endDate: formattedEndDate,
+      endDate: formatDateForFirestore(endDate.value),
       schedule: selectedSchedule.value,
       location: selectedLocation.value,
       user: selectedUser.value,
       object: selectedObject.value,
-    };
-
-    const eventsRef = collection(db, "events");
-    await addDoc(eventsRef, eventData);
+      createdAt: serverTimestamp(),
+    });
 
     alert("Event saved successfully!");
-    closeContainer();
+    isVisible.value = false;
   } catch (error) {
     console.error("Error saving event:", error);
     alert("Error saving event: " + (error.message || "Unknown error"));
@@ -64,19 +87,12 @@ const saveChanges = async () => {
   }
 };
 
-const discardChanges = () => {
-  closeContainer();
-};
-
-defineExpose({
-  isVisible,
-  closeContainer,
-});
+defineExpose({ isVisible });
 </script>
 
 <template>
   <div v-if="isVisible" class="event-create__overlay">
-    <div class="event-create__backdrop" @click="closeContainer"></div>
+    <div class="event-create__backdrop" @click="isVisible = false"></div>
     <div class="event-create">
       <div class="event-create__header">
         <h2 class="event-create__title">Opret Event</h2>
@@ -84,26 +100,44 @@ defineExpose({
           src="@/assets/icons/Close.png"
           alt="Close"
           class="event-create__close-icon"
-          @click="closeContainer"
+          @click="isVisible = false"
         />
       </div>
       <div class="event-create__content">
-        <div class="form-container">
+        <div v-if="isLoadingOptions" class="event-create__loading">
+          <p>Indlæser data...</p>
+        </div>
+        <div v-else-if="errorMessage" class="event-create__error">
+          <p>{{ errorMessage }}</p>
+        </div>
+        <div v-else class="form-container">
           <DateInput v-model="startDate" label="Start dato" />
-
           <DateInput v-model="endDate" label="Slut dato" />
 
-          <DropdownSelector v-model="selectedSchedule" :options="scheduleOptions" label="Skema" />
-
+          <DropdownSelector
+            v-model="selectedSchedule"
+            :options="options.schedules"
+            label="Skema"
+            placeholder="Vælg skema..."
+          />
           <DropdownSelector
             v-model="selectedLocation"
-            :options="locationOptions"
+            :options="options.locations"
             label="Lokation"
+            placeholder="Vælg lokation..."
           />
-
-          <DropdownSelector v-model="selectedUser" :options="userOptions" label="Bruger" />
-
-          <DropdownSelector v-model="selectedObject" :options="objectOptions" label="Objekt" />
+          <DropdownSelector
+            v-model="selectedUser"
+            :options="options.users"
+            label="Bruger"
+            placeholder="Vælg bruger..."
+          />
+          <DropdownSelector
+            v-model="selectedObject"
+            :options="options.objects"
+            label="Objekt"
+            placeholder="Vælg objekt..."
+          />
 
           <div class="event-create__actions">
             <button
@@ -115,7 +149,7 @@ defineExpose({
             </button>
             <button
               class="event-create__button event-create__button--discard"
-              @click="discardChanges"
+              @click="isVisible = false"
               :disabled="isLoading"
             >
               Annuller
@@ -165,9 +199,22 @@ defineExpose({
   }
 
   &__content {
-    max-height: calc(95vh - 60px); /* Adjust based on header height */
+    max-height: calc(95vh - 60px);
     overflow-y: auto;
     padding: $spacing-md;
+  }
+
+  &__loading,
+  &__error {
+    padding: $spacing-md;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__error {
+    color: #d32f2f;
+    background-color: #ffebee;
+    border-radius: 4px;
   }
 
   &__overlay {
