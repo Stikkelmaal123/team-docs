@@ -1,96 +1,74 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import LuluTestFilter from "@/components/LuluTestFilter.vue";
 
-const selectedFilters = ref([]);
-const selectedOptions = ref({});
+const selectedFilter = ref("");
+const selectedValue = ref("");
 
-const dummyList = [
-  "Option A",
-  "Option B",
-  "Option C",
-];
+// Dummy data
+const allData = ref([
+  { id: 1, user: "John", object: "Objekt A" },
+  { id: 2, user: "Alice", object: "Objekt B" },
+  { id: 3, user: "John", object: "Objekt C" },
+]);
 
-function handleFiltersChange(values) {
-  selectedFilters.value = values;
+const filterOptions = computed(() => {
+  if (!selectedFilter.value) return [];
+  const values = allData.value.map((item) => item[selectedFilter.value]);
+  return [...new Set(values)];
+});
 
-  for (const key of Object.keys(selectedOptions.value)) {
-    if (!values.includes(key)) {
-      delete selectedOptions.value[key];
-    }
+// Filter list
+const filteredData = computed(() => {
+  if (!selectedFilter.value || !selectedValue.value) {
+    return allData.value;
   }
-}
+  return allData.value.filter(
+    (item) => item[selectedFilter.value] === selectedValue.value,
+  );
+});
 
-function getLabel(filter) {
-  switch (filter) {
-  case "company":
-    return "Virksomhed";
-  case "user":
-    return "Bruger";
-  case "location":
-    return "Lokation";
-  case "object":
-    return "Objekt";
-  case "schema":
-    return "Skema";
-  default:
-    return filter;
-  }
+function onFilterChange(filterKey) {
+  selectedFilter.value = filterKey;
+  selectedValue.value = ""; // reset on new selection
 }
 </script>
-
 <template>
-    <div class="test-view">
-      <LuluTestFilter @update:filters="handleFiltersChange" />
-      <div
-        v-if="selectedFilters.length > 0"
-        class="test-view__dropdowns"
-      >
-        <div
-          v-for="filter in selectedFilters"
-          :key="filter"
-          class="test-view__dropdown"
-        >
-          <label :for="`select-${filter}`">{{ getLabel(filter) }}:</label>
-          <select
-            :id="`select-${filter}`"
-            v-model="selectedOptions[filter]"
-          >
-            <option disabled value="">Vælg...</option>
-            <option
-              v-for="item in dummyList"
-              :key="item"
-              :value="item"
-            >
-              {{ item }}
-            </option>
-          </select>
-        </div>
-      </div>
+  <div class="test-view">
+    <LuluTestFilter @update:filter="onFilterChange" />
+    <div v-if="selectedFilter" class="test-view__dropdown">
+      <label>
+        Vælg:
+        <select v-model="selectedValue">
+          <option disabled value="">Vælg...</option>
+          <option v-for="option in filterOptions" :key="option" :value="option">
+            {{ option }}
+          </option>
+        </select>
+      </label>
     </div>
-  </template>
-
+    <div class="test-view__list">
+      <h3>Resultater</h3>
+      <ul>
+        <li v-for="item in filteredData" :key="item.id">
+          {{ item.user }} – {{ item.object }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
 <style scoped>
-.test-view__dropdowns {
+.test-view {
   display: flex;
-  gap: 2rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 1rem;
 }
 
 .test-view__dropdown {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 1rem;
+}
 
-  label {
-    margin-bottom: 0.25rem;
-    font-weight: 500;
-  }
-
-  select {
-    padding: 0.4rem 0.8rem;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
+.test-view__list ul {
+  padding-left: 1rem;
 }
 </style>
