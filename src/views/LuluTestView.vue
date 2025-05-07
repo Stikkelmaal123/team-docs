@@ -7,9 +7,30 @@ const selectedValue = ref("");
 
 // Dummy data
 const allData = ref([
-  { id: 1, user: "John", object: "Objekt A" },
-  { id: 2, user: "Alice", object: "Objekt B" },
-  { id: 3, user: "John", object: "Objekt C" },
+  {
+    id: 1,
+    company: "Firma A",
+    user: "John",
+    location: "København",
+    object: "Objekt A",
+    schema: "Skema 1",
+  },
+  {
+    id: 2,
+    company: "Firma B",
+    user: "Alice",
+    location: "Aarhus",
+    object: "Objekt B",
+    schema: "Skema 2",
+  },
+  {
+    id: 3,
+    company: "Firma A",
+    user: "John",
+    location: "Odense",
+    object: "Objekt C",
+    schema: "Skema 3",
+  },
 ]);
 
 const filterOptions = computed(() => {
@@ -33,6 +54,7 @@ function onFilterChange(filterKey) {
   selectedValue.value = ""; // reset on new selection
 }
 </script>
+
 <template>
   <div class="test-view">
     <LuluTestFilter @update:filter="onFilterChange" />
@@ -51,12 +73,13 @@ function onFilterChange(filterKey) {
       <h3>Resultater</h3>
       <ul>
         <li v-for="item in filteredData" :key="item.id">
-          {{ item.user }} – {{ item.object }}
+          {{ item.company }} – {{ item.user }} – {{ item.location }} – {{ item.object }} – {{ item.schema }}
         </li>
       </ul>
     </div>
   </div>
 </template>
+
 <style scoped>
 .test-view {
   display: flex;

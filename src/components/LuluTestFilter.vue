@@ -5,8 +5,11 @@ const emit = defineEmits(["update:filter"]);
 const selected = ref("");
 
 const options = [
+  { label: "Virksomhed", value: "company"},
   { label: "Bruger", value: "user" },
+  { label: "Lokation", value: "location"},
   { label: "Objekt", value: "object" },
+  { label: "Skema", value: "schema"},
 ];
 
 function select(value) {
@@ -14,6 +17,7 @@ function select(value) {
   emit("update:filter", value);
 }
 </script>
+
 <template>
   <div class="filter">
     <button
@@ -26,6 +30,7 @@ function select(value) {
     </button>
   </div>
 </template>
+
 <style scoped>
 .filter {
   display: flex;
