@@ -37,5 +37,9 @@ import "@/assets/main.scss";
       <img src="@/assets/icons/Settings.png" alt="Indstillinger" class="sidenav__icon" />
       Indstillinger
     </router-link>
+    <router-link to="/helpandguides" class="sidenav__link">
+      <img src="@/assets/icons/Information.png" alt="Hjælp&Guides" class="sidenav__icon" />
+      Hjælp og Guides
+    </router-link>
   </nav>
 </template>
