@@ -12,7 +12,6 @@ const errorMessage = ref("");
 
 const formData = reactive({
   startDate: "",
-  endDate: "",
   schedule: "",
   company: "",
   location: "",
@@ -74,13 +73,11 @@ async function saveEvent() {
 
     const eventData = {
       startDate: formattedStartDate,
-      endDate: formatDateForFirestore(formData.endDate),
       schedule: formData.schedule,
       company: formData.company,
       location: formData.location,
       user: formData.user,
       object: formData.object,
-      createdAt: serverTimestamp(),
     };
 
     await addDoc(collection(db, "events"), eventData);
@@ -125,8 +122,7 @@ defineExpose({ isVisible });
         </div>
 
         <div v-else class="event-modal__form-container">
-          <DateInput v-model="formData.startDate" label="Start dato" />
-          <DateInput v-model="formData.endDate" label="Slut dato" />
+          <DateInput v-model="formData.startDate" label="Dato" />
 
           <DropdownSelector
             v-model="formData.schedule"
