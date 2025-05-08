@@ -1,4 +1,5 @@
 @use "sass:map";
+@use "sass:color";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
 
 $font-stack: "Roboto", sans-serif;
@@ -214,9 +215,9 @@ body {
 .sidenav__link {
   display: flex;
   align-items: center;
-  width: 100%; 
+  width: 100%;
   white-space: nowrap;
-  height: 4rem; 
+  height: 4rem;
   overflow: hidden;
   text-overflow: ellipsis;
   gap: 1rem;
@@ -225,12 +226,12 @@ body {
   text-decoration: none;
   font-size: 1rem;
   border: 1px solid transparent;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 
   &:hover {
     background-color: #f2f2f2;
-    color: var(--primary-color); 
-    border: 0.13rem solid var(--topmenu-blue)
+    color: var(--primary-color);
+    border: 0.13rem solid var(--topmenu-blue);
   }
 }
 
@@ -239,50 +240,173 @@ body {
   border: 0.13rem solid var(--topmenu-blue);
 }
 
-  img.sidenav__icon {
-    width: 2rem;
-    height: 2rem;
-    margin-right: 1rem;
-    object-fit: contain;
+img.sidenav__icon {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  object-fit: contain;
+}
+
+.calendar {
+  &__header {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
   }
 
-  .calendar {
-    &__header {
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-      
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    background-color: var(--topmenu-blue);
+    overflow: hidden;
+    max-width: 900px;
+    border: 0.13rem solid var(--topmenu-blue);
+    border-top: 1rem solid var(--topmenu-blue);
+    border-radius: 0.5rem;
+  }
+
+  &__cell {
+    background-color: white;
+    padding: 1.5rem;
+    min-height: 100px;
+    font-weight: 500;
+    position: relative;
+  }
+
+  &__cell--grey {
+    background-color: #f5f5f5;
+    color: #aaa;
+  }
+
+  &__cell--today {
+    border: 2px solid #7f3fbf;
+  }
+}
+
+.event-modal {
+  position: relative;
+  width: 100%;
+  max-width: 30rem;
+  max-height: 95vh;
+  border-radius: 4px;
+  border: 1px solid var(--primary-blue3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  background-color: var(--background-white);
+  z-index: 1002;
+
+  &__header {
+    background-color: var(--topmenu-blue);
+    padding: $spacing-sm $spacing-md;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    color: var(--background-white);
+    margin: 0;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+  }
+
+  &__close-icon {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  &__form-container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__content {
+    max-height: calc(95vh - 60px);
+    overflow-y: auto;
+    padding: $spacing-md;
+  }
+
+  &__loading,
+  &__error {
+    padding: $spacing-md;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__error {
+    color: #d32f2f;
+    background-color: #ffebee;
+    border-radius: 4px;
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+
+  &__backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1001;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: $spacing-md;
+    margin-top: $spacing-lg;
+  }
+
+  &__button {
+    padding: $spacing-sm $spacing-lg;
+    border-radius: 4px;
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+
+    &--save {
+      background-color: var(--button-green);
+      color: var(--background-white);
+
+      &:hover:not(:disabled) {
+        background-color: color.adjust(#97ce75, $lightness: -10%);
+      }
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
     }
-  
-    &__grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 1px;
-      background-color: var(--topmenu-blue);
-      overflow: hidden;
-      max-width: 900px;
-      border: 0.13rem solid var(--topmenu-blue);
-      border-top: 1rem solid var(--topmenu-blue);
-      border-radius: 0.5rem;
-    }
-  
-    &__cell {
-      background-color: white;
-      padding: 1.5rem;
-      min-height: 100px;
-      font-weight: 500;
-      position: relative;
-      
-      
-    }
-  
-    &__cell--grey {
-      background-color: #f5f5f5;
-      color: #aaa;
-    }
-  
-    &__cell--today {
-      border: 2px solid #7f3fbf;
+
+    &--discard {
+      background-color: var(--background-white);
+      border: 1px solid #e0e0e0;
+      color: #666;
+
+      &:hover:not(:disabled) {
+        background-color: #f3f3f3;
+      }
+
+      &:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+      }
     }
   }
- 
- 
+}
