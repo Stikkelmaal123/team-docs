@@ -9,6 +9,7 @@ const isVisible = ref(false);
 const isLoading = ref(false);
 const isLoadingOptions = ref(true);
 const errorMessage = ref("");
+const emit = defineEmits(["event-saved"]);
 
 const formData = reactive({
   startDate: "",
@@ -82,6 +83,7 @@ async function saveEvent() {
 
     await addDoc(collection(db, "events"), eventData);
     alert("Event saved successfully!");
+    emit("event-saved");
     closeModal();
   } catch (error) {
     console.error("Error saving event:", error);

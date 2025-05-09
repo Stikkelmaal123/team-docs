@@ -1,5 +1,7 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "@/firebase";
 import EventEntry from "@/components/EventEntry.vue";
 import EventEntryAdd from "@/components/EventEntryAdd.vue";
 import EventEdit from "@/components/EventEdit.vue";
@@ -8,42 +10,69 @@ import EventCreate from "@/components/EventCreate.vue";
 const props = defineProps({
   day: Date,
 });
-// Some mocky data for now
-const events = ref([
-  {
-    id: 1,
-    title: "Check Døre",
-    location: "UCL Niels Bohrs Allé",
-    timeRange: "11:15 - 11:30",
-  },
-]);
 
+const events = ref([]);
 const eventEditRef = ref(null);
 const eventCreateRef = ref(null);
-const openEditor = (eventID) => {
-  eventEditRef.value.isVisible = true;
-};
-const openCreator = () => {
-  eventCreateRef.value.isVisible = true;
+const isVisible = ref(true);
+
+const fetchEvents = async () => {
+  try {
+    const querySnapshot = await getDocs(collection(db, "events"));
+    events.value = querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        title: data.schedule || "No Title",
+        location: data.location || "",
+        timeRange: formatDate(data.startDate),
+      };
+    });
+  } catch (err) {
+    console.error("Error fetching events:", err);
+  }
 };
 
-const isVisible = ref(true);
+const formatDate = (timestamp) => {
+  if (!timestamp) return "";
+  const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+  return date.toLocaleDateString();
+};
+
+const openEditor = (eventId) => {
+  if (eventEditRef.value) {
+    eventEditRef.value.openModal(eventId);
+  }
+};
+
+const openCreator = () => {
+  if (eventCreateRef.value) {
+    eventCreateRef.value.isVisible = true;
+  }
+};
 
 const closeContainer = () => {
   isVisible.value = false;
 };
 
+// Custom event handler to refresh events
+const handleEventSaved = () => {
+  fetchEvents();
+};
+
+onMounted(fetchEvents);
+
 defineExpose({
   isVisible,
   closeContainer,
 });
-
 </script>
 
 <template>
   <div v-if="isVisible" class="event-list">
     <div class="event-list__header">
-      <h2 class="event-list__title" v-if="day"> Events for {{ day.toDateString() }}</h2>
+      <h2 class="event-list__title" v-if="day">Events for {{ day.toDateString() }}</h2>
+      <h2 class="event-list__title" v-else>All Events</h2>
       <img
         src="@/assets/icons/Close.png"
         alt="Close"
@@ -53,16 +82,16 @@ defineExpose({
     </div>
     <div class="event-list__content">
       <EventEntry
-      v-for="event in events"
-      :key="event.id"
-      :title="event.title"
-      :location="event.location"
-      :timeRange="event.timeRange"
-      :onEdit="openEditor"
-    />
-    <EventEntryAdd :onCreate="openCreator" />
-  <EventEdit ref="eventEditRef" />
-  <EventCreate ref="eventCreateRef" />
+        v-for="event in events"
+        :key="event.id"
+        :title="event.title"
+        :location="event.location"
+        :timeRange="event.timeRange"
+        :onEdit="() => openEditor(event.id)"
+      />
+      <EventEntryAdd :onCreate="openCreator" />
+      <EventEdit ref="eventEditRef" @event-saved="handleEventSaved" />
+      <EventCreate ref="eventCreateRef" @event-saved="handleEventSaved" />
     </div>
   </div>
 </template>
@@ -102,7 +131,9 @@ defineExpose({
   }
 
   &__content {
-    //Coming April 2024
+    height: calc(100% - 52px);
+    overflow-y: auto;
+    padding: $spacing-xs 0;
   }
 }
 </style>
