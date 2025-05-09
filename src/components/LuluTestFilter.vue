@@ -13,8 +13,13 @@ const options = [
 ];
 
 function select(value) {
-  selected.value = value;
-  emit("update:filter", value);
+  if (selected.value === value) {
+    selected.value = "";
+    emit("update:filter", ""); // deselect
+  } else {
+    selected.value = value;
+    emit("update:filter", value); // new selection
+  }
 }
 </script>
 
