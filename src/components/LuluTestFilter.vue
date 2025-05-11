@@ -73,10 +73,10 @@ function select(value) {
 
 .filter__card {
   position: relative;
-  width: 120px;
-  height: 110px;
-  border: 1.5px solid #4f9dd1;
-  border-radius: 4px;
+  width: 7.5rem;
+  height: 6.875rem;
+  border: 0.094rem solid #4f9dd1;
+  border-radius: 0.25rem;
   background-color: #ffffff;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -90,13 +90,12 @@ function select(value) {
 /* RADIO OUTLINE CIRCLE */
 .filter__radio {
   position: absolute;
-  top: 6px;
-  right: 6px;
-  width: 14px;
-  height: 14px;
-  border: 2px solid #333;
+  top: 0.375rem;
+  right: 0.375rem;
+  width: 0.875rem;
+  height: 0.875rem;
+  border: 0.125rem solid #333;
   border-radius: 50%;
-  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,8 +103,8 @@ function select(value) {
 
 /* SMALL inner dot (only visible when active) */
 .filter__card--active .filter__radio-dot {
-  width: 6px;
-  height: 6px;
+  width: 0.375rem;
+  height: 0.375rem;
   background-color: #333;
   border-radius: 50%;
 }
@@ -113,7 +112,7 @@ function select(value) {
 /* Holds icon + label, pushes them to lower center */
 .filter__content {
   position: absolute;
-  bottom: 10px;
+  bottom: 0.625rem;
   left: 0;
   right: 0;
   text-align: center;
@@ -124,8 +123,8 @@ function select(value) {
 
 /* Icon placeholder */
 .filter__icon {
-  width: 28px;
-  height: 28px;
+  width: 1.75rem;
+  height: 1.75rem;
   object-fit: contain;
   margin-bottom: 0.3rem;
 }
