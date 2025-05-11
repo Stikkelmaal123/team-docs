@@ -62,75 +62,70 @@ function select(value) {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .filter {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-bottom: 1.5rem;
-  margin-left: 1.5rem;
-}
+  margin: 1.5rem 0 1.5rem 1.5rem;
 
-.filter__card {
-  position: relative;
-  width: 7.5rem;
-  height: 6.875rem;
-  border: 0.094rem solid #4f9dd1;
-  border-radius: 0.25rem;
-  background-color: #ffffff;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-top: 1.5rem;
-}
+  &__card {
+    position: relative;
+    width: 7.5rem;
+    height: 6.875rem;
+    border: 0.094rem solid #4f9dd1;
+    border-radius: 0.25rem;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 1.5rem;
 
-.filter__card--active {
-  background-color: #dceaf6;
-}
+    &--active {
+      background-color: #dceaf6;
+    }
+  }
 
-/* RADIO OUTLINE CIRCLE */
-.filter__radio {
-  position: absolute;
-  top: 0.375rem;
-  right: 0.375rem;
-  width: 0.875rem;
-  height: 0.875rem;
-  border: 0.125rem solid #333;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+  &__radio {
+    position: absolute;
+    top: 0.375rem;
+    right: 0.375rem;
+    width: 0.875rem;
+    height: 0.875rem;
+    border: 0.125rem solid #333;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-/* SMALL inner dot (only visible when active) */
-.filter__card--active .filter__radio-dot {
-  width: 0.375rem;
-  height: 0.375rem;
-  background-color: #333;
-  border-radius: 50%;
-}
+  &__card--active &__radio-dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    background-color: #333;
+    border-radius: 50%;
+  }
 
-/* Holds icon + label, pushes them to lower center */
-.filter__content {
-  position: absolute;
-  bottom: 0.625rem;
-  left: 0;
-  right: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+  &__content {
+    position: absolute;
+    bottom: 0.625rem;
+    left: 0;
+    right: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-/* Icon placeholder */
-.filter__icon {
-  width: 1.75rem;
-  height: 1.75rem;
-  object-fit: contain;
-  margin-bottom: 0.3rem;
-}
+  &__icon {
+    width: 1.75rem;
+    height: 1.75rem;
+    object-fit: contain;
+    margin-bottom: 0.3rem;
+  }
 
-.filter__label {
-  font-size: 0.85rem;
-  font-weight: 600;
+  &__label {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
 }
 </style>

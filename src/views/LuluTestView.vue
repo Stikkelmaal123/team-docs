@@ -65,13 +65,16 @@ function onSearchInput() {
   showSuggestions.value = true;
 };
 </script>
+
 <template>
   <div class="test-view">
     <LuluTestFilter @update:filter="onFilterChange" />
+
     <div v-if="selectedFilter" class="test-view__dropdown">
-      <label>
+      <label class="test-view__label">
         Vælg:
         <input
+          class="test-view__input"
           type="text"
           v-model="searchQuery"
           placeholder="Søg..."
@@ -80,78 +83,84 @@ function onSearchInput() {
           @blur="() => setTimeout(() => (showSuggestions = false), 150)"
         />
       </label>
-      <ul v-if="showSuggestions" class="suggestion-list">
+
+      <ul v-if="showSuggestions" class="test-view__suggestion-list">
         <li
           v-if="dropdownOptions.length"
           v-for="option in dropdownOptions"
           :key="option"
+          class="test-view__suggestion-item"
           @click="selectOption(option)"
         >
           {{ option }}
         </li>
-        <li v-else class="suggestion-list__empty">
+        <li v-else class="test-view__suggestion-empty">
           Ingen resultater
         </li>
       </ul>
     </div>
+
     <div class="test-view__list">
       <p v-if="filteredData.length === 0">Ingen resultater fundet.</p>
     </div>
   </div>
 </template>
+
 <style scoped>
-.test-view__dropdown {
-  width: 100%;
-  margin-bottom: 1.5rem;
-}
+.test-view {
+  &__dropdown {
+    width: 100%;
+    position: relative;
+    margin: 0 0 1.5rem 1.5rem;
+  }
 
-.test-view__dropdown label {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.95rem;
-  margin-bottom: 0.4rem;
-  margin-left: 1.5rem;
-}
+  &__label {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
 
-.test-view__dropdown input {
-  padding: 0.5rem 0.75rem;
-  font-size: 0.95rem;
-  border: 1.5px solid #ccc;
-  border-radius: 0.3rem;
-  width: 41.5rem;
-  box-sizing: border-box;
-}
-.suggestion-list {
-  position: absolute;
-  z-index: 10;
-  list-style: none;
-  padding: 0;
-  margin: 0.2rem 0 0;
-  margin-left: 1.5rem;
-  border: 0.063rem solid #ccc;
-  background: white;
-  max-height: 150px;
-  overflow-y: auto;
-  width: 41.5rem;
-}
+  &__input {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+    border: 1.5px solid #ccc;
+    border-radius: 0.3rem;
+    width: 41.5rem;
+    box-sizing: border-box;
+  }
 
-.suggestion-list li {
-  padding: 0.4rem 0.6rem;
-  cursor: pointer;
-}
+  &__suggestion-list {
+    position: absolute;
+    z-index: 10;
+    list-style: none;
+    padding: 0;
+    margin-top: 0.2rem;
+    border: 1px solid #ccc;
+    background: white;
+    max-height: 150px;
+    overflow-y: auto;
+    width: 41.5rem;
+  }
 
-.suggestion-list li:hover {
-  background-color: #f0f0f0;
-}
+  &__suggestion-item {
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
 
-.test-view__dropdown {
-  position: relative;
-  margin-bottom: 1rem;
-}
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
 
-.suggestion-list__empty {
-  padding: 0.4rem 0.6rem;
-  color: #888;
-  font-style: italic;
+  &__suggestion-empty {
+    padding: 0.4rem 0.6rem;
+    color: #888;
+    font-style: italic;
+  }
+
+  &__list {
+    margin-left: 1.5rem;
+  }
 }
 </style>
