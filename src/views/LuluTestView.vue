@@ -124,18 +124,28 @@ function onSearchInput() {
 </template>
 
 <style scoped>
-.test-view {
+.test-view__dropdown {
+  max-width: 600px; /* Matches width of filter row */
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.test-view__dropdown label {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  margin-left: 1.5rem;
 }
 
-.test-view__dropdown {
-  margin-bottom: 1rem;
-}
-
-.test-view__list ul {
-  padding-left: 1rem;
+.test-view__dropdown input {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  width: 42rem;
+  box-sizing: border-box;
 }
 .suggestion-list {
   position: absolute;
@@ -143,11 +153,12 @@ function onSearchInput() {
   list-style: none;
   padding: 0;
   margin: 0.2rem 0 0;
+  margin-left: 1.5rem;
   border: 1px solid #ccc;
   background: white;
   max-height: 150px;
   overflow-y: auto;
-  width: 200px;
+  width: 42rem;
 }
 
 .suggestion-list li {
