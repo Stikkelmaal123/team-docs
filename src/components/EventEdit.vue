@@ -40,7 +40,7 @@ async function fetchOptionsFromFirestore() {
         if (snapshot.exists()) {
           options[collectionName] = Object.values(snapshot.data() || {});
         }
-      })
+      }),
     );
     await Promise.all(fetchPromises);
   } catch (error) {

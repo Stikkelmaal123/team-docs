@@ -6,9 +6,17 @@ import EventEntry from "@/components/EventEntry.vue";
 import EventEntryAdd from "@/components/EventEntryAdd.vue";
 import EventEdit from "@/components/EventEdit.vue";
 import EventCreate from "@/components/EventCreate.vue";
+import { watch } from "vue";
 
 const props = defineProps({
   day: Date,
+});
+
+watch(() => props.day, (newDay) => {
+  if (newDay) {
+    isVisible.value = true;
+    fetchEvents();
+  }
 });
 
 const events = ref([]);
@@ -26,8 +34,16 @@ const fetchEvents = async () => {
         title: data.schedule || "No Title",
         location: data.location || "",
         timeRange: formatDate(data.startDate),
+        date: data.startDate?.toDate ? data.startDate.toDate() : new Date(data.startDate),
       };
-    });
+    })
+      .filter((event) => {
+        return (
+          event.date.getFullYear() === props.day.getFullYear() &&
+          event.date.getMonth() === props.day.getMonth() &&
+          event.date.getDate() === props.day.getDate()
+        );
+      });
   } catch (err) {
     console.error("Error fetching events:", err);
   }

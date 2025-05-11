@@ -13,14 +13,25 @@ const monthName = computed(() => {
 
 <template>
   <div class="calendar">
-    <button @click="prevMonth" class="calendar-nav-button">←</button>
+    <button @click="prevMonth" class="calendar__nav-button">←</button>
     <h2 class="calendar__header">
       {{ monthName }} {{ currentYear }}
     </h2>
-    <button @click="nextMonth" class="calendar-nav-button">→</button>
+    <button @click="nextMonth" class="calendar__nav-button">→</button>
   </div>
 </template>
 
-<style lang="sass" scoped>
+<style lang="scss" scoped>
 @use "@/assets/main.scss";
+.calendar{
+
+  display: flex;
+  &__nav-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 0 1rem;
+  }
+}
 </style>
