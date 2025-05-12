@@ -57,7 +57,6 @@ function handleClick() {
 <style lang="scss" scoped>
 @use "@/assets/main.scss";
 
-
 .event-count-badge {
     margin-top: 0.25rem;
     background-color: #4caf50;
