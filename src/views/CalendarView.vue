@@ -3,6 +3,7 @@ import { ref } from "vue";
 import CalendarHeader from "@/components/CalendarHeader.vue";
 import CalendarGrid from "@/components/CalendarGrid.vue";
 import EventList from "@/components/EventList.vue";
+import FilterComponent from "@/components/FilterComponent.vue";
 
 const selectedDay = ref(null);
 
@@ -19,6 +20,7 @@ function closeEventList() {
 <template>
   <div class="calendar-view">
     <div class="calendar-view__left-content">
+      <FilterComponent />
       <CalendarHeader />
       <CalendarGrid @select-day="openModal" />
     </div>
