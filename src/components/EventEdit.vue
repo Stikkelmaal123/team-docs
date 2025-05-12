@@ -40,7 +40,7 @@ async function fetchOptionsFromFirestore() {
         if (snapshot.exists()) {
           options[collectionName] = Object.values(snapshot.data() || {});
         }
-      }),
+      })
     );
     await Promise.all(fetchPromises);
   } catch (error) {
@@ -61,8 +61,7 @@ function formatDate(date) {
 function parseDate(dateString) {
   if (!dateString) return null;
   const [day, month, year] = dateString.split("/").map(Number);
-  const date = new Date(year, month - 1, day);
-  return isNaN(date.getTime()) ? null : date;
+  return new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
 }
 
 async function loadEvent(id) {
