@@ -273,10 +273,6 @@ img.sidenav__icon {
     font-weight: 500;
     position: relative;
   }
-
-  &__cell--today {
-    border: 2px solid #7f3fbf;
-  }
 }
 
 .event-modal {
@@ -290,6 +286,7 @@ img.sidenav__icon {
   overflow: hidden;
   background-color: var(--background-white);
   z-index: 1002;
+  
 
   &__header {
     background-color: var(--topmenu-blue);
@@ -301,7 +298,7 @@ img.sidenav__icon {
 
   &__title {
     color: var(--background-white);
-    margin: 0;
+    margin: 2;
     font-size: $font-size-base;
     font-weight: $font-weight-medium;
   }

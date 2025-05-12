@@ -118,12 +118,13 @@ defineExpose({
 .event-list {
   width: 100%;
   max-width: 30rem;
-  height: 95%;
+  height: 97%;
   border-radius: 4px;
   border: 1px solid var(--primary-blue3);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   background-color: var(--background-white);
+  margin-top: 1.5rem;
 
   &__header {
     background-color: var(--topmenu-blue);

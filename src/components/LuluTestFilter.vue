@@ -78,7 +78,6 @@ function select(value) {
     background-color: #ffffff;
     cursor: pointer;
     transition: all 0.2s ease;
-    margin-top: 1.5rem;
 
     &--active {
       background-color: #dceaf6;
