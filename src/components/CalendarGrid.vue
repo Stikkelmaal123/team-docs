@@ -62,7 +62,7 @@ const filteredEvents = computed(() => {
 .calendar__cell {
   width: 100%;
   min-height: 100px;
-  border: 1px solid #ccc;
+  
 }
 
 .calendar__cell--grey {
