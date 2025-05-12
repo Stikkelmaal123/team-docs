@@ -1,9 +1,14 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useCalendar } from "@/composables/useCalendar";
 import DayCell from "@/components/DayCell.vue";
 import { db } from "@/firebase";
 import { collection, getDocs } from "firebase/firestore";
+
+const props = defineProps({
+  selectedFilter: String,
+  selectedValue: String,
+});
 
 const { daysInMonth } = useCalendar();
 const emit = defineEmits(["select-day"]);
@@ -28,6 +33,15 @@ const fetchAllEvents = async () => {
 
 onMounted(fetchAllEvents);
 
+const filteredEvents = computed(() => {
+  if (!props.selectedFilter || !props.selectedValue) return allEvents.value;
+  return allEvents.value.filter((event) => {
+    const value = event[props.selectedFilter];
+    if (!value || typeof value !== "string") return false;
+    return value.toLowerCase().includes(props.selectedValue.toLowerCase());
+  });
+});
+
 </script>
 
 
@@ -38,7 +52,7 @@ onMounted(fetchAllEvents);
       v-for="(day, index) in daysInMonth"
       :key="index"
       :day="day"
-      :events="allEvents"
+      :events="filteredEvents"
       @select="handleSelectDay"
     />
   </div>

@@ -4,6 +4,8 @@ import LuluTestFilter from "@/components/LuluTestFilter.vue";
 import { db } from "@/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
+const emit = defineEmits(["update:filter", "update:value"]);
+
 const selectedFilter = ref("");
 const selectedValue = ref("");
 const searchQuery = ref("");
@@ -43,12 +45,14 @@ function onFilterChange(filterKey) {
   selectedValue.value = "";
   searchQuery.value = "";
   showSuggestions.value = false;
+  emit("update:filter", filterKey);
 };
 
 function selectOption(option) {
   selectedValue.value = option;
   searchQuery.value = option;
   showSuggestions.value = false;
+  emit("update:value", option);
 };
 
 function onSearchInput() {

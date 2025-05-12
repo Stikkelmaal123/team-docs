@@ -7,6 +7,9 @@ import FilterComponent from "@/components/FilterComponent.vue";
 
 const selectedDay = ref(null);
 
+const selectedFilter = ref("");
+const selectedValue = ref("");
+
 function openModal(day) {
   selectedDay.value = day;
 }
@@ -15,14 +18,26 @@ function closeEventList() {
   selectedDay.value = null;
 }
 
+function handleFilterChange(filter) {
+  selectedFilter.value = filter;
+}
+
+function handleValueChange(value) {
+  selectedValue.value = value;
+}
 </script>
 
 <template>
   <div class="calendar-view">
     <div class="calendar-view__left-content">
-      <FilterComponent />
+      <FilterComponent
+      @update:filter="handleFilterChange"
+      @update:value="handleValueChange" />
       <CalendarHeader />
-      <CalendarGrid @select-day="openModal" />
+      <CalendarGrid
+      @select-day="openModal"
+      :selected-filter="selectedFilter"
+      :selected-value="selectedValue"/>
     </div>
     <div class="calendar-view__right-content">
       <EventList v-if="selectedDay" :day="selectedDay" @close="closeEventList" />
