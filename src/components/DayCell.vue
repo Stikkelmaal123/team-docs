@@ -10,6 +10,10 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
+  isCurrentMonth: {
+    type: Boolean,
+    default: true,
+  },
 });
 
 const eventCount = computed(() => {
@@ -34,11 +38,13 @@ function handleClick() {
 }
 </script>
 
-
 <template>
-  <div
+ <div
     class="calendar__cell"
-    :class="{ empty: !day }"
+    :class="{
+      empty: !day,
+      'calendar__cell--grey': day && !isCurrentMonth
+    }"
     @click="handleClick"
   >
     <span v-if="day">{{ day.getDate() }}</span>
@@ -61,6 +67,4 @@ function handleClick() {
     font-size: 0.75rem;
     display: inline-block;
   }
-
-
 </style>

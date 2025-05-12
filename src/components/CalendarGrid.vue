@@ -42,23 +42,49 @@ const filteredEvents = computed(() => {
   });
 });
 
+function isToday(date) {
+  const today = new Date();
+  return (
+    date.getFullYear() === today.getFullYear() &&
+    date.getMonth() === today.getMonth() &&
+    date.getDate() === today.getDate()
+  );
+}
+
+function isCurrentMonth(date) {
+  return (
+    date.getFullYear() === currentYear.value &&
+    date.getMonth() === currentMonth.value
+  );
+}
+
 </script>
-
-
 
 <template>
   <div class="calendar__grid">
     <DayCell
-      v-for="(day, index) in daysInMonth"
-      :key="index"
-      :day="day"
-      :events="filteredEvents"
-      @select="handleSelectDay"
-    />
+       v-for="(day, index) in daysInMonth"
+  :key="index"
+  :day="day.date"
+  :events="filteredEvents"
+  :isCurrentMonth="day.isCurrentMonth"
+  @select="handleSelectDay"
+/>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use "@/assets/main.scss";
+
+.calendar__cell {
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #ccc;
+}
+
+.calendar__cell--grey {
+  background-color: #f0f0f0;
+  color: #aaa;
+}
 </style>
 
