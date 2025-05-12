@@ -106,7 +106,7 @@ function onSearchInput() {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .test-view {
   &__dropdown {
     width: 100%;

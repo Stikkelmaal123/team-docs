@@ -4,7 +4,7 @@ import buildingIcon from "@/assets/icons/Company.png";
 import userIcon from "@/assets/icons/users.png";
 import locationIcon from "@/assets/icons/Folder.png";
 import objectIcon from "@/assets/icons/Objects.png";
-import schemaIcon from "@/assets/icons/schedule.png";
+import scheduleIcon from "@/assets/icons/schedule.png";
 
 const emit = defineEmits(["update:filter"]);
 const selected = ref("");
@@ -32,8 +32,8 @@ const options = [
   },
   {
     label: "Skema",
-    value: "schema",
-    icon: schemaIcon,
+    value: "schedule",
+    icon: scheduleIcon,
   },
 ];
 
