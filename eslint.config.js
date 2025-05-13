@@ -66,12 +66,7 @@ export default [
       indent: ["error", 2],
       "no-eval": ["error"],
       "no-trailing-spaces": ["error"],
-      "no-unused-vars": [
-        "error",
-        {
-          varsIgnorePattern: "^props$",
-        },
-      ],
+      "no-unused-vars": ["error"],
       "no-var": ["error"],
       "prefer-const": ["error"],
       "no-console": ["warn", { allow: ["warn", "error"] }],
