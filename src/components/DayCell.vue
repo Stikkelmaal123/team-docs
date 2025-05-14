@@ -58,12 +58,11 @@ function handleClick() {
 @use "@/assets/main.scss";
 
 .event-count-badge {
-    margin-top: 0.25rem;
-    background-color: #4caf50;
-    color: white;
-    border-radius: 1rem;
-    padding: 0.1rem 0.5rem;
-    font-size: 0.75rem;
-    display: inline-block;
+    border: 1px solid #446A5A;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 0.2rem 2rem 0.2rem;
   }
 </style>
