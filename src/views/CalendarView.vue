@@ -52,13 +52,14 @@ function handleValueChange(value) {
 .calendar-view {
   display: flex;
   justify-content: space-between;
+  margin: 1.5rem;
 
   &__left-content {
-    width: 60vw;
+    width: 50%;
   }
 
   &__right-content {
-    width: 30vw;
+    width: 30%;
   }
 }
 </style>

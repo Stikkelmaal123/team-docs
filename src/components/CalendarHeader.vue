@@ -6,32 +6,24 @@ const { currentMonth, currentYear, nextMonth, prevMonth } = useCalendar();
 
 const monthName = computed(() => {
   const date = new Date(currentYear.value, currentMonth.value);
-  return date.toLocaleString("default", { month: "long" });
+  const name = date.toLocaleString("default", { month: "long" });
+  return name.charAt(0).toUpperCase() + name.slice(1);
 });
 </script>
 
 
 <template>
   <div class="calendar">
-    <button @click="prevMonth" class="calendar__nav-button">←</button>
-    <h2 class="calendar__header">
+    <h1>
       {{ monthName }} {{ currentYear }}
-    </h2>
-    <button @click="nextMonth" class="calendar__nav-button">→</button>
+    </h1>
+    <div class="calendar__nav-button--container">
+      <button @click="prevMonth" class="calendar__nav-button">←</button>
+      <button @click="nextMonth" class="calendar__nav-button">→</button>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use "@/assets/main.scss";
-.calendar{
-
-  display: flex;
-  &__nav-button {
-    background: none;
-    border: none;
-    font-size: 2rem;
-    cursor: pointer;
-    margin: 0 1rem;
-  }
-}
 </style>

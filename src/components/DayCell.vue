@@ -49,7 +49,7 @@ function handleClick() {
   >
     <span v-if="day">{{ day.getDate() }}</span>
     <div v-if="eventCount > 0" class="calendar__cell--event-count">
-      {{ eventCount }}
+      {{ eventCount }} Events
     </div>
   </div>
 </template>

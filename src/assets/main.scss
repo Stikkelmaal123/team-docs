@@ -248,6 +248,23 @@ img.sidenav__icon {
 }
 
 .calendar {
+  display: flex;
+  justify-content: space-between;
+
+  &__nav-button {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    margin: 0 1rem;
+
+    &--container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
   &__header {
     margin-bottom: 1rem;
     font-size: 1.5rem;
@@ -263,7 +280,6 @@ img.sidenav__icon {
     border: 0.13rem solid var(--topmenu-blue);
     border-top: 1rem solid var(--topmenu-blue);
     border-radius: 0.5rem 0.5rem 0 0;
-    margin-left: 1.5rem;
   }
 
   &__cell {

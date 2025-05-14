@@ -67,7 +67,6 @@ function select(value) {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  margin: 1.5rem 0 1.5rem 1.5rem;
 
   &__card {
     position: relative;
