@@ -48,7 +48,7 @@ function handleClick() {
     @click="handleClick"
   >
     <span v-if="day">{{ day.getDate() }}</span>
-    <div v-if="eventCount > 0" class="event-count-badge">
+    <div v-if="eventCount > 0" class="calendar__cell--event-count">
       {{ eventCount }}
     </div>
   </div>
@@ -56,13 +56,4 @@ function handleClick() {
 
 <style lang="scss" scoped>
 @use "@/assets/main.scss";
-
-.event-count-badge {
-    border: 1px solid #446A5A;
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 0 0.2rem 2rem 0.2rem;
-  }
 </style>

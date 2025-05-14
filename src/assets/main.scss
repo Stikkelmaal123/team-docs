@@ -275,6 +275,15 @@ img.sidenav__icon {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+      &--event-count{
+      border: 1px solid #446A5A;
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 0.2rem 2rem 0.2rem;
+    }
   }
 }
 
