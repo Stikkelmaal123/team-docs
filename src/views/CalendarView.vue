@@ -55,6 +55,7 @@ function handleValueChange(value) {
   display: flex;
   justify-content: space-between;
   margin: 1.5rem;
+  gap: 64px;
 
   &__left-content {
     width: 800px;
