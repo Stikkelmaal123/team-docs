@@ -7,6 +7,7 @@ import FilterComponent from "@/components/FilterComponent.vue";
 
 const selectedDay = ref(null);
 
+
 const selectedFilter = ref("");
 const selectedValue = ref("");
 
@@ -36,6 +37,7 @@ function handleValueChange(value) {
       <CalendarHeader />
       <CalendarGrid
       @select-day="openModal"
+      :selected-day="selectedDay"
       :selected-filter="selectedFilter"
       :selected-value="selectedValue"/>
     </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue";
+import { computed, watch } from "vue";
 
 const props = defineProps({
   day: {
@@ -13,6 +13,10 @@ const props = defineProps({
   isCurrentMonth: {
     type: Boolean,
     default: true,
+  },
+  selectedDay: {
+    type: Date,
+    default: null,
   },
 });
 
@@ -30,12 +34,25 @@ const eventCount = computed(() => {
   }).length;
 });
 
+
 const emit = defineEmits(["select"]);
+
 function handleClick() {
   if (props.day) {
     emit("select", props.day);
   }
 }
+
+const isActive = computed(() => {
+  return (
+    props.day &&
+    props.selectedDay &&
+    props.day.getFullYear() === props.selectedDay.getFullYear() &&
+    props.day.getMonth() === props.selectedDay.getMonth() &&
+    props.day.getDate() === props.selectedDay.getDate()
+  );
+});
+
 </script>
 
 <template>
@@ -48,7 +65,7 @@ function handleClick() {
     @click="handleClick"
   >
     <span v-if="day">{{ day.getDate() }}</span>
-    <div v-if="eventCount > 0" class="calendar__cell--event-count">
+    <div v-if="eventCount > 0" :class="['calendar__cell--event-count',  { active: isActive }]">
       {{ eventCount }} Events
     </div>
   </div>

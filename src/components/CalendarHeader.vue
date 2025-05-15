@@ -13,13 +13,13 @@ const monthName = computed(() => {
 
 
 <template>
-  <div class="calendar">
-    <h1>
+  <div class="calendar__header">
+    <h1 class="calendar__header--title">
       {{ monthName }} {{ currentYear }}
     </h1>
     <div class="calendar__nav-button--container">
-      <button @click="prevMonth" class="calendar__nav-button">←</button>
-      <button @click="nextMonth" class="calendar__nav-button">→</button>
+    <button @click="prevMonth" class="calendar__nav-button">❮</button>
+    <button @click="nextMonth" class="calendar__nav-button">❯</button>
     </div>
   </div>
 </template>

@@ -248,9 +248,6 @@ img.sidenav__icon {
 }
 
 .calendar {
-  display: flex;
-  justify-content: space-between;
-
   &__nav-button {
     background: none;
     border: none;
@@ -266,8 +263,15 @@ img.sidenav__icon {
   }
 
   &__header {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+
+      &--title {
+        margin:0;
+      }
   }
 
   &__grid {
@@ -300,12 +304,21 @@ img.sidenav__icon {
       color: #aaa;
     }
       &--event-count{
-      border: 1px solid #446A5A;
+      border: 1px solid var(--primary-green3);;
+      border-left: 4px solid var(--primary-green3);;
       border-radius: 6px;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       padding: 0 0.2rem 2rem 0.2rem;
+      background-color: var(--background-white);
+      &:hover {
+      background-color: var(--primary-green2)!important;
+      }
+
+      &.active {
+        background-color: var(--primary-green2);
+      }
     }
   }
 }

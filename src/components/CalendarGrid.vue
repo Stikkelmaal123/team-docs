@@ -8,6 +8,7 @@ import { collection, getDocs } from "firebase/firestore";
 const props = defineProps({
   selectedFilter: String,
   selectedValue: String,
+  selectedDay: Date,
 });
 
 const { daysInMonth } = useCalendar();
@@ -41,6 +42,7 @@ const filteredEvents = computed(() => {
     return value.toLowerCase().includes(props.selectedValue.toLowerCase());
   });
 });
+
 </script>
 
 <template>
@@ -51,6 +53,7 @@ const filteredEvents = computed(() => {
   :day="day.date"
   :events="filteredEvents"
   :isCurrentMonth="day.isCurrentMonth"
+  :selected-day="selectedDay"
   @select="handleSelectDay"
 />
   </div>

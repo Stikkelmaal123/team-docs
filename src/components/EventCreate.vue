@@ -5,11 +5,13 @@ import { db } from "@/firebase";
 import DateInput from "@/components/DateInput.vue";
 import DropdownSelector from "@/components/DropdownSelector.vue";
 
+
 const isVisible = ref(false);
 const isLoading = ref(false);
 const isLoadingOptions = ref(true);
 const errorMessage = ref("");
 const emit = defineEmits(["event-saved"]);
+
 
 const formData = reactive({
   startDate: "",
@@ -27,6 +29,8 @@ const options = reactive({
   users: [],
   objects: [],
 });
+
+
 
 onMounted(fetchOptionsFromFirestore);
 

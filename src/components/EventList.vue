@@ -107,7 +107,7 @@ defineExpose({
       />
       <EventEntryAdd :onCreate="openCreator" />
       <EventEdit ref="eventEditRef" @event-saved="handleEventSaved" />
-      <EventCreate ref="eventCreateRef" @event-saved="handleEventSaved" />
+      <EventCreate ref="eventCreateRef" @event-saved="handleEventSaved" :day="selectedDay" />
     </div>
   </div>
 </template>

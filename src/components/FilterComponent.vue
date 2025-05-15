@@ -101,7 +101,7 @@ function onSearchInput() {
   &__dropdown {
     width: 100%;
     position: relative;
-    margin: 0 0 1.5rem 1.5rem;
+    margin: 1.5rem 0 1.5rem 0;
   }
 
   &__label {
@@ -117,7 +117,6 @@ function onSearchInput() {
     font-size: 0.95rem;
     border: 1.5px solid #ccc;
     border-radius: 0.3rem;
-    width: 41.5rem;
     box-sizing: border-box;
   }
 
