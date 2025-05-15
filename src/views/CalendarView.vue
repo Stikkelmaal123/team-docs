@@ -55,11 +55,12 @@ function handleValueChange(value) {
   margin: 1.5rem;
 
   &__left-content {
-    width: 50%;
+    width: 800px;
   }
 
   &__right-content {
-    width: 30%;
+    width: 500px;
+    margin-right: 3rem;
   }
 }
 </style>

@@ -58,15 +58,5 @@ const filteredEvents = computed(() => {
 
 <style lang="scss" scoped>
 @use "@/assets/main.scss";
-
-.calendar__cell {
-  width: 100%;
-  min-height: 100px;
-}
-
-.calendar__cell--grey {
-  background-color: #f0f0f0;
-  color: #aaa;
-}
 </style>
 

@@ -51,10 +51,10 @@ function select(value) {
       :class="['filter__card', { 'filter__card--active': selected === option.value }]"
       @click="select(option.value)"
     >
-      <span class="filter__radio">
-        <span class="filter__radio-dot" />
-      </span>
-      <div class="filter__content">
+    <span class="filter__radio">
+      <span class="filter__radio-dot"></span>
+    </span>
+    <div class="filter__content">
         <img :src="option.icon" alt="Icons" class="filter__icon" />
         <div class="filter__label">{{ option.label }}</div>
       </div>
@@ -66,11 +66,11 @@ function select(value) {
 .filter {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: row;
 
   &__card {
     position: relative;
-    width: 7.5rem;
+    width: 100%;
     height: 6.875rem;
     border: 0.094rem solid #4f9dd1;
     border-radius: 0.25rem;

@@ -275,11 +275,13 @@ img.sidenav__icon {
     grid-template-columns: repeat(7, 1fr);
     gap: 1px;
     background-color: var(--topmenu-blue);
-    overflow: hidden;
     max-width: 900px;
     border: 0.13rem solid var(--topmenu-blue);
     border-top: 1rem solid var(--topmenu-blue);
     border-radius: 0.5rem 0.5rem 0 0;
+    :hover {
+      background-color:var(--background-blue);
+    }
   }
 
   &__cell {
@@ -291,7 +293,12 @@ img.sidenav__icon {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    cursor: pointer;
 
+      &--grey {
+      background-color: #f0f0f0;
+      color: #aaa;
+    }
       &--event-count{
       border: 1px solid #446A5A;
       border-radius: 6px;
