@@ -247,10 +247,10 @@ defineExpose({ isVisible, openModal });
             >
               Annuller
             </button>
-            <button 
+            <button
               class="event-modal__button event-modal__button--delete"
               @click="deleteEvent"
-            >              
+              >
               Slet
             </button>
           </div>
