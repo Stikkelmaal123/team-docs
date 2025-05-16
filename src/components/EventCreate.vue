@@ -12,7 +12,7 @@ const errorMessage = ref("");
 const emit = defineEmits(["event-saved"]);
 
 const formData = reactive({
-  startDate: "", // DATE HANDLING: stores the date input from user
+  startDate: null, // DATE HANDLING: stores the date input from user
   schedule: "",
   company: "",
   location: "",
@@ -61,51 +61,18 @@ function handleFetchError(error) {
   errorMessage.value = `Kunne ikke hente data fra databasen: ${error.message || "Ukendt fejl"}`;
 }
 
-// DATE HANDLING: formats date string (dd/mm/yyyy) to JS Date object for Firestore
-function formatDateForFirestore(dateString) {
-  if (!dateString) return null;
 
-  const [day, month, year] = dateString.split("/").map(Number); // DATE HANDLING: split and parse
-  const date = new Date(year, month - 1, day); // DATE HANDLING: create Date object
-
-  return isNaN(date.getTime()) ? null : date; // DATE HANDLING: check for invalid date
-}
-
-// DATE HANDLING: validates the formatted date
-function validateDate(date) {
-  if (!date) {
-    alert("Invalid date format. Please use dd/mm/yyyy");
-    return false;
-  }
-  return true;
-}
 
 async function saveEvent() {
-  try {
-    isLoading.value = true;
-    const formattedStartDate = formatDateForFirestore(formData.startDate); // DATE HANDLING: format before save
-
-    if (!validateDate(formattedStartDate)) return; // DATE HANDLING: validate before save
-
-    await saveEventToFirestore(formattedStartDate); // DATE HANDLING: pass formatted date to save
-    handleSaveSuccess();
-  } catch (error) {
-    handleSaveError(error);
-  } finally {
-    isLoading.value = false;
-  }
-}
-
-async function saveEventToFirestore(formattedStartDate) {
   const eventData = {
-    startDate: formattedStartDate, // DATE HANDLING: save formatted date to Firestore
+    startDate: formData.startDate, // DATE HANDLING: save formatted date to Firestore
     schedule: formData.schedule,
     company: formData.company,
     location: formData.location,
     user: formData.user,
     object: formData.object,
   };
-
+  handleSaveSuccess();
   await addDoc(collection(db, "events"), eventData);
 }
 
@@ -115,10 +82,10 @@ function handleSaveSuccess() {
   closeModal();
 }
 
-function handleSaveError(error) {
-  console.error("Error saving event:", error);
-  alert(`Error saving event: ${error.message || "Unknown error"}`);
-}
+// function handleSaveError(error) {
+//   console.error("Error saving event:", error);
+//   alert(`Error saving event: ${error.message || "Unknown error"}`);
+// }
 
 function closeModal() {
   isVisible.value = false;

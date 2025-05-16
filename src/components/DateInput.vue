@@ -1,8 +1,8 @@
 <script setup>
 defineProps({
   modelValue: {
-    type: String,
-    default: "",
+    type: Date,
+    default: null,
   },
   label: {
     type: String,
@@ -10,27 +10,14 @@ defineProps({
   },
   placeholder: {
     type: String,
-    default: "dd/mm/yyyy",
+    default: "",
   },
 });
 
 const emit = defineEmits(["update:modelValue"]);
 
-const formatDateInput = (event) => {
-  let input = event.target.value.replace(/\D/g, "");
-
-  // Format the date with dashes
-  if (input.length > 0) {
-    if (input.length > 2) {
-      input = input.substring(0, 2) + "/" + input.substring(2);
-    }
-
-    if (input.length > 4) {
-      input = input.substring(0, 5) + "/" + input.substring(5);
-    }
-  }
-
-  emit("update:modelValue", input);
+const updateDate = (event) => {
+  emit("update:modelValue", event.target.value);
 };
 </script>
 
@@ -39,14 +26,11 @@ const formatDateInput = (event) => {
     <label class="date-input__label">{{ label }}</label>
     <div class="date-input__container">
       <input
+        type="date"
         :value="modelValue"
-        @input="formatDateInput"
-        type="text"
+        @input="updateDate"
         class="date-input__field"
-        :placeholder="placeholder"
-        maxlength="10"
       />
-      <img src="@/assets/icons/Calendar.png" alt="Calendar" class="date-input__icon" />
     </div>
   </div>
 </template>
@@ -78,15 +62,6 @@ const formatDateInput = (event) => {
     width: 100%;
     height: 38px;
     font-size: $font-size-base;
-  }
-
-  &__icon {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 16px;
-    height: 16px;
   }
 }
 </style>
