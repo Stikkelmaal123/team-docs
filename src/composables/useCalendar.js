@@ -31,17 +31,18 @@ const daysInMonth = computed(() => {
   const firstDayNextMonth = new Date(year, month + 1, 1);
   const lastDayOfMonth = new Date(firstDayNextMonth - 1);
 
+  let startDayIndex = firstDayOfMonth.getDay();
+  if (startDayIndex === 0) startDayIndex = 7;
 
-  const startDayIndex = firstDayOfMonth.getDay();
   const prevDays = [];
-  for (let i = startDayIndex - 1; i >= 0; i--) {
+  for (let i = startDayIndex - 1; i > 0; i--) {
     const d = new Date(firstDayOfMonth);
-    d.setDate(d.getDate() - i - 1);
+    d.setDate(d.getDate() - i);
     prevDays.push({
       date: new Date(d),
       isCurrentMonth: false,
     });
-  }
+  };
 
   const currentDays = [];
   const totalDays = lastDayOfMonth.getDate();
@@ -50,7 +51,7 @@ const daysInMonth = computed(() => {
       date: new Date(year, month, i),
       isCurrentMonth: true,
     });
-  }
+  };
 
   const days = [...prevDays, ...currentDays];
   const remaining = 42 - days.length;
@@ -59,7 +60,7 @@ const daysInMonth = computed(() => {
       date: new Date(firstDayNextMonth.getFullYear(), firstDayNextMonth.getMonth(), i),
       isCurrentMonth: false,
     });
-  }
+  };
 
   return days;
 });
@@ -73,4 +74,4 @@ export function useCalendar() {
     prevMonth,
     daysInMonth,
   };
-}
+};
