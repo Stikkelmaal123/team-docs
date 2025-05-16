@@ -60,10 +60,11 @@ function handleValueChange(value) {
   &__left-content {
     width: 800px;
   }
-
   &__right-content {
-    width: 500px;
-    margin-right: 3rem;
+    width: 600px;
+    @media only screen and (max-width: 1700px) {
+      width: 400px;
+    }
   }
 }
 </style>
