@@ -439,6 +439,11 @@ img.sidenav__icon {
       }
     }
 
+    &--delete {
+      background-color: #e53935;
+      color: white;
+    }
+
     &--discard {
       background-color: var(--background-white);
       border: 1px solid #e0e0e0;

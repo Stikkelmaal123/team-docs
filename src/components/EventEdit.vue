@@ -1,9 +1,10 @@
 <script setup>
 import { ref, onMounted, reactive } from "vue";
-import { getDoc, doc, updateDoc } from "firebase/firestore";
+import { getDoc, doc, updateDoc, deleteDoc } from "firebase/firestore";
 import { db } from "@/firebase";
 import DateInput from "@/components/DateInput.vue";
 import DropdownSelector from "@/components/DropdownSelector.vue";
+import { useRouter } from "vue-router";
 
 const emit = defineEmits(["event-saved"]);
 const isVisible = ref(false);
@@ -11,6 +12,8 @@ const isLoading = ref(false);
 const isLoadingOptions = ref(true);
 const errorMessage = ref("");
 const eventId = ref(null);
+const router = useRouter();
+
 
 const formData = reactive({
   startDate: "",
@@ -130,6 +133,24 @@ async function saveEvent() {
   }
 }
 
+const deleteEvent = async () => {
+  try {
+    if (!eventId.value) {
+      console.error("No event ID available.");
+      return;
+    }
+
+    await deleteDoc(doc(db, "events", eventId.value));
+    alert("Event deleted successfully.");
+
+    closeModal(); // Close modal first (optional)
+    router.push("/calendar"); // Navigate to calendar view
+  } catch (error) {
+    console.error("Error deleting event:", error);
+    alert(`Error deleting event: ${error.message}`);
+  }
+};
+
 function resetForm() {
   Object.keys(formData).forEach((key) => {
     formData[key] = "";
@@ -152,6 +173,7 @@ function openModal(id) {
 }
 
 defineExpose({ isVisible, openModal });
+
 </script>
 
 <template>
@@ -224,6 +246,12 @@ defineExpose({ isVisible, openModal });
               :disabled="isLoading"
             >
               Annuller
+            </button>
+            <button 
+              class="event-modal__button event-modal__button--delete"
+              @click="deleteEvent"
+            >              
+              Slet
             </button>
           </div>
         </div>
