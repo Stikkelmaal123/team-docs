@@ -5,16 +5,14 @@ import { db } from "@/firebase";
 import DateInput from "@/components/DateInput.vue";
 import DropdownSelector from "@/components/DropdownSelector.vue";
 
-
 const isVisible = ref(false);
 const isLoading = ref(false);
 const isLoadingOptions = ref(true);
 const errorMessage = ref("");
 const emit = defineEmits(["event-saved"]);
 
-
 const formData = reactive({
-  startDate: "",
+  startDate: "", // DATE HANDLING: stores the date input from user
   schedule: "",
   company: "",
   location: "",
@@ -29,8 +27,6 @@ const options = reactive({
   users: [],
   objects: [],
 });
-
-
 
 onMounted(fetchOptionsFromFirestore);
 
@@ -65,15 +61,17 @@ function handleFetchError(error) {
   errorMessage.value = `Kunne ikke hente data fra databasen: ${error.message || "Ukendt fejl"}`;
 }
 
+// DATE HANDLING: formats date string (dd/mm/yyyy) to JS Date object for Firestore
 function formatDateForFirestore(dateString) {
   if (!dateString) return null;
 
-  const [day, month, year] = dateString.split("/").map(Number);
-  const date = new Date(year, month - 1, day);
+  const [day, month, year] = dateString.split("/").map(Number); // DATE HANDLING: split and parse
+  const date = new Date(year, month - 1, day); // DATE HANDLING: create Date object
 
-  return isNaN(date.getTime()) ? null : date;
+  return isNaN(date.getTime()) ? null : date; // DATE HANDLING: check for invalid date
 }
 
+// DATE HANDLING: validates the formatted date
 function validateDate(date) {
   if (!date) {
     alert("Invalid date format. Please use dd/mm/yyyy");
@@ -85,11 +83,11 @@ function validateDate(date) {
 async function saveEvent() {
   try {
     isLoading.value = true;
-    const formattedStartDate = formatDateForFirestore(formData.startDate);
+    const formattedStartDate = formatDateForFirestore(formData.startDate); // DATE HANDLING: format before save
 
-    if (!validateDate(formattedStartDate)) return;
+    if (!validateDate(formattedStartDate)) return; // DATE HANDLING: validate before save
 
-    await saveEventToFirestore(formattedStartDate);
+    await saveEventToFirestore(formattedStartDate); // DATE HANDLING: pass formatted date to save
     handleSaveSuccess();
   } catch (error) {
     handleSaveError(error);
@@ -100,7 +98,7 @@ async function saveEvent() {
 
 async function saveEventToFirestore(formattedStartDate) {
   const eventData = {
-    startDate: formattedStartDate,
+    startDate: formattedStartDate, // DATE HANDLING: save formatted date to Firestore
     schedule: formData.schedule,
     company: formData.company,
     location: formData.location,
@@ -151,6 +149,7 @@ defineExpose({ isVisible });
           <p>{{ errorMessage }}</p>
         </div>
         <form v-else class="event-modal__form-container" @submit.prevent="saveEvent">
+          <!-- DATE HANDLING: date input binding -->
           <DateInput v-model="formData.startDate" label="Dato" />
 
           <DropdownSelector
