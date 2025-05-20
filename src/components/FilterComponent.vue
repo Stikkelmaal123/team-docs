@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed, onMounted } from "vue";
-import LuluTestFilter from "@/components/LuluTestFilter.vue";
+import FilterRadio from "@/components/FilterRadio.vue";
 import { db } from "@/firebase";
 import { collection, getDocs } from "firebase/firestore";
 
@@ -63,7 +63,7 @@ function onSearchInput() {
 
 <template>
   <div class="test-view">
-    <LuluTestFilter @update:filter="onFilterChange" />
+    <FilterRadio @update:filter="onFilterChange" />
 
     <div v-if="selectedFilter" class="test-view__dropdown">
       <label class="test-view__label">
