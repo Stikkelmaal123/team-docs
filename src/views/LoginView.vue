@@ -20,21 +20,21 @@ const doLogin = async () => {
 </script>
 
 <template>
-    <div class="login-page">
-      <form @submit.prevent="doLogin">
-        <h2>Login</h2>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" v-model="email" placeholder="Enter your email" required />
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="password" v-model="password" placeholder="Enter your password" required />
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  </template>
+  <div class="login-page">
+    <form class="login-page__form" @submit.prevent="doLogin">
+      <h2 class="login-page__title">Login</h2>
+      <div class="login-page__group">
+        <label class="login-page__label" for="email">Email</label>
+        <input class="login-page__input" type="email" id="email" v-model="email" placeholder="Enter your email" required />
+      </div>
+      <div class="login-page__group">
+        <label class="login-page__label" for="password">Password</label>
+        <input class="login-page__input" type="password" id="password" v-model="password" placeholder="Enter your password" required />
+      </div>
+      <button class="login-page__button" type="submit">Login</button>
+    </form>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 
@@ -45,40 +45,47 @@ const doLogin = async () => {
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 2px 2px 12px #eee;
-}
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
 
-.form-group {
-  margin-bottom: 15px;
-}
+  &__title {
+    text-align: center;
+    margin-bottom: 20px;
+  }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
+  &__group {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
 
-input {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-}
+  &__label {
+    font-weight: bold;
+  }
 
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #007BFF;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+  &__input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
 
-button:hover {
-  background-color: #0056b3;
+  &__button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
 }
 </style>
