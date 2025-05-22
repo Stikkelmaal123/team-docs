@@ -4,7 +4,7 @@ import buildingIcon from "@/assets/icons/Company.png";
 import userIcon from "@/assets/icons/users.png";
 import locationIcon from "@/assets/icons/Folder.png";
 import objectIcon from "@/assets/icons/Objects.png";
-import scheduleIcon from "@/assets/icons/schedule.png";
+import scheduleIcon from "@/assets/icons/Schedule.png";
 
 const emit = defineEmits(["update:filter"]);
 const selected = ref("");
