@@ -30,7 +30,7 @@ npm run build
 
 ```sh
 http://localhost:5173/
-link: https://dbi-2025.web.app/
+https://dbi-2025.web.app/
 ```
 ### Enter Credentials
 
