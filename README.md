@@ -29,8 +29,8 @@ npm run build
 ### Navigate to Local Branch or Live Website
 
 ```sh
-http://localhost:5173/
-https://dbi-2025.web.app/
+Local enviroment: http://localhost:5173/ or whatever localhost is displayed in console
+Link to website: https://dbi-2025.web.app/
 ```
 ### Enter Credentials
 
