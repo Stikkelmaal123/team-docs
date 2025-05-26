@@ -1,6 +1,6 @@
 ### Download Project
 ```sh
-Download the project locally
+Download the project locally from GitHub
 ```
 
 ### Navigate to Project
