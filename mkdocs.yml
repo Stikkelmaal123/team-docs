@@ -13,4 +13,5 @@ nav:
   - Static-code-analysis: static-code-analysis.md
   - Unit-testing: unit-testing.md
   - E2e-testing: e2e-testing.md
+  - Refactoring: refactoring.md
   - GitHub-actions: github-actions.md
