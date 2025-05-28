@@ -1,6 +1,7 @@
 # Static Code Analysis
 
-We used ESLint for static code analysis. Our setup for rules and ignored files and directories were as following:
+Vi brugte ESLint til statisk kodeanalyse. Der blev som udgangspunkt lavet linting inden hvert push. 
+Vores opsætning for regler samt ignorerede filer og mapper var som følger:
 
 <pre>
 import js from "@eslint/js";
@@ -86,6 +87,3 @@ export default [
 ];
 
 </pre>
-
-Refactoring details are documented here.
-LET SOOOOOOGOOOOO
