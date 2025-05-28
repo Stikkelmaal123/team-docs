@@ -1,6 +1,6 @@
-# Welcome to Team Documentation
+# "Velkommen til versionstyingsafleveringen"
 
-This site contains guidelines, processes, and resources for our team.
+Dette er en pages-site omkring versionstyring af dette site: https://github.com/Stikkelmaal123/team-docs
 
 ## Quick Links
 
