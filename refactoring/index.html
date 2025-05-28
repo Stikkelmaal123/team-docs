@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>Static-code-analysis - Team Documentation</title>
+        <title>Refactoring - Team Documentation</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -94,8 +94,8 @@
                 </a>
             </li>
             <li class="drac-box">
-                <a href="./"
-                    class=" active 
+                <a href="../static-code-analysis/"
+                    class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Static-code-analysis
                 </a>
@@ -115,8 +115,8 @@
                 </a>
             </li>
             <li class="drac-box">
-                <a href="../refactoring/"
-                    class="
+                <a href="./"
+                    class=" active 
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Refactoring
                 </a>
@@ -156,13 +156,13 @@
         <div class="container">
             <div class="row row-preview">
                 <div class="col">
-                    <a href="../git-strategy/"
+                    <a href="../e2e-testing/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </div>
                 <div class="col">
-                    <a href="../unit-testing/"
+                    <a href="../github-actions/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
@@ -199,95 +199,18 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h1 id="static-code-analysis">Static Code Analysis</h1>
-<p>We used ESLint for static code analysis. Our setup for rules and ignored files and directories were as following:</p>
+        <p><h1 id="refactoring">Refactoring</h1>
+<p>We have been refactoring like crazy!!</p>
+<ul>
+<li><strong>Examples</strong>: </li>
+</ul>
 <pre>
-import js from "@eslint/js";
-import pluginVue from "eslint-plugin-vue";
-import globals from "globals";
-import pluginVitest from "@vitest/eslint-plugin";
-import pluginCypress from "eslint-plugin-cypress/flat";
 
-export default [
-  {
-    name: "app/files-to-lint",
-    files: ["**/*.{js,mjs,jsx,vue}"],
-  },
+Example test cases:
+1. [Test Case 1]
+2. [Test Case 2]
 
-  {
-    name: "app/files-to-ignore",
-    ignores: [
-      "**/dist/**", // Build output
-      "**/dist-ssr/**", // Server-side rendered build output
-      "**/coverage/**", // Test coverage reports
-      "**/node_modules/**", // Dependencies
-      "**/build/**", // Build folder
-      "**/*.min.js", // Minified JavaScript files
-      "**/.cache/**", // Cache files
-      "**/temp/**", // Temporary files
-      "**/.env", // Environment variables
-      "**/.env.*", // Environment variables with extensions
-      "**/*.log", // Log files
-      "**/.vscode/**", // VSCode settings
-      "**/.idea/**", // IntelliJ IDEA settings
-      "**/cypress/videos/**", // Cypress videos
-      "**/cypress/screenshots/**", // Cypress screenshots
-      "**/cypress/fixtures/**", // Cypress fixtures
-      "**/cypress/support/**", // Cypress support files
-      "**/test-output/**", // Test output
-      "**/reports/**", // Reports
-      "**/*.generated.*", // Generated files
-      "**/*.bak", // Backup files
-      "**/*.config.*", // Configuration files
-    ],
-  },
-
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
-    },
-  },
-
-  js.configs.recommended,
-  ...pluginVue.configs["flat/essential"],
-
-  {
-    ...pluginVitest.configs.recommended,
-    files: ["src/**/__tests__/*"],
-  },
-
-  {
-    ...pluginCypress.configs.recommended,
-    files: ["cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}", "cypress/support/**/*.{js,ts,jsx,tsx}"],
-  },
-
-  {
-    rules: {
-      "comma-dangle": ["error", "always-multiline"],
-      eqeqeq: ["error", "always"],
-      indent: ["error", 2],
-      "no-eval": ["error"],
-      "no-trailing-spaces": ["error"],
-      "no-unused-vars": ["error"],
-      "no-var": ["error"],
-      "prefer-const": ["error"],
-      "no-console": ["warn", { allow: ["warn", "error"] }],
-      complexity: ["warn", { max: 20 }],
-      "no-param-reassign": ["error"],
-      quotes: ["error", "double"],
-      semi: ["error", "always"],
-      "vue/component-name-in-template-casing": ["error", "PascalCase"],
-      "vue/no-unused-components": ["error"],
-    },
-  },
-];
-
-</pre>
-
-<p>Refactoring details are documented here.
-LET SOOOOOOGOOOOO</p></p>
+<pre></p>
     </article>
 </section>
             <!-- endblock -->
