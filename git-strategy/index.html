@@ -73,20 +73,6 @@
                 </a>
             </li>
             <li class="drac-box">
-                <a href="../about/"
-                    class="
-                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
-                    About
-                </a>
-            </li>
-            <li class="drac-box">
-                <a href="../guidelines/"
-                    class="
-                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
-                    Guidelines
-                </a>
-            </li>
-            <li class="drac-box">
                 <a href="./"
                     class=" active 
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
@@ -156,7 +142,7 @@
         <div class="container">
             <div class="row row-preview">
                 <div class="col">
-                    <a href="../guidelines/"
+                    <a href=".."
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
@@ -200,13 +186,24 @@
                 <section class="p-md-5 section-content">
     <article>
         <p><h1 id="git-branching-strategy">Git Branching Strategy</h1>
-<p>We use the following branching strategy for this project:</p>
+<h2 id="vi-har-i-gruppen-brugt-en-variant-af-gitflow-som-branching-strategi">Vi har i gruppen brugt en variant af Gitflow som branching strategi.</h2>
 <ul>
-<li><strong>Main branch</strong>: Contains production-ready code.</li>
-<li><strong>Feature branches</strong>: Used for developing new features.</li>
-<li><strong>Hotfix branches</strong>: For urgent fixes to the main branch.</li>
+<li>At det blev en variant skyldes en misforståelse/sammenblanding af branchingstrategierne, der er redegjort nedenfor hvordan Gitflow er blevet brugt og hvordan det skulle ha været brugt.</li>
 </ul>
-<p>All changes are merged into the main branch via pull requests.</p></p>
+<h3 id="gitflow-er-blevet-brugt-med-flgende-opstning">Gitflow er blevet brugt med følgende opsætning:</h3>
+<ul>
+<li><strong>Main branch</strong>: Bliver brugt til version 1.0</li>
+<li><strong>Developer branch</strong>: Indeholder produktionsklar kode.</li>
+</ul>
+<p>Al udvikling har forgået på developer branchen. Dette har gjort det markant nemmere at følge med i hvad hinanden lavede, men har også krævet langt mere kommunikation end hvis rigtig gitflow var blevet benyttet. </p>
+<h3 id="hvordan-gitflow-skulle-ha-vret-brugt">Hvordan Gitflow skulle ha været brugt:</h3>
+<ul>
+<li><strong>Main branch</strong>: Bliver brugt til version 1.0</li>
+<li><strong>Developer branch</strong>: Indeholder produktionsklar kode.</li>
+<li><strong>Feature branches</strong>: Bliver brugt til udvikling af features.</li>
+<li><strong>Hotfix branches</strong>: Bliver brugt til akutte fixes.</li>
+</ul>
+<p>Hvis de to ekstra branches havde været med under udviklingen af produktet, havde det været væsentligt nemmere at holde overblik over hvad folk manglede og var igang med. Det havde også afhjulpet den kommunikation der skulle være omkring hver gang et gruppemedlem pushede.</p></p>
     </article>
 </section>
             <!-- endblock -->
