@@ -193,83 +193,74 @@ Der er blevet lavet mockdata, samt omskrevet props til variabler så funktionern
 Sidste test er i virkeligheden flere test der kører på en fil, men det gav mening at køre test på den, da den rent faktisk var en fil for sig selv i produktion. Alle filer og test filer kan til gå på developerbranchen <a href="https://github.com/Stikkelmaal123/team-docs/tree/developer">her.</a></p>
 <h5 id="filtereventsjs-test">filterEvents.js test</h5>
 <h6 id="function-script-filterevents">function script filterEvents</h6>
-<pre>
-export function filteredEvents(events, selectedFilter, selectedValue) {
+<pre><code>export function filteredEvents(events, selectedFilter, selectedValue) {
   if (!selectedFilter || !selectedValue) return events;
-  return events.filter((event) => {
+  return events.filter((event) =&gt; {
     const value = event[selectedFilter];
-    if (!value || typeof value !== "string") return false;
+    if (!value || typeof value !== &quot;string&quot;) return false;
     return value.toLowerCase().includes(selectedValue.toLowerCase());
   });
 }
-</pre>
-
+</code></pre>
 <h6 id="test-script-filterevents">test script filterEvents</h6>
-<pre>
-import { describe, it, expect } from "vitest";
-import { filteredEvents } from "@/functions-for-testing/filterEvents.js";
+<pre><code>import { describe, it, expect } from &quot;vitest&quot;;
+import { filteredEvents } from &quot;@/functions-for-testing/filterEvents.js&quot;;
 
-describe("filteredEvents", () => {
+describe(&quot;filteredEvents&quot;, () =&gt; {
   const events = [
-    { company: "Acme", user: "Alice" },
-    { company: "Beta", user: "Bob" },
-    { company: "Acme", user: "Charlie" },
+    { company: &quot;Acme&quot;, user: &quot;Alice&quot; },
+    { company: &quot;Beta&quot;, user: &quot;Bob&quot; },
+    { company: &quot;Acme&quot;, user: &quot;Charlie&quot; },
   ];
 
-  it("returns all events if no filter is set", () => {
-    expect(filteredEvents(events, "", "")).toEqual(events);
+  it(&quot;returns all events if no filter is set&quot;, () =&gt; {
+    expect(filteredEvents(events, &quot;&quot;, &quot;&quot;)).toEqual(events);
   });
 
-  it("filters by company", () => {
-    expect(filteredEvents(events, "company", "acme")).toHaveLength(2);
+  it(&quot;filters by company&quot;, () =&gt; {
+    expect(filteredEvents(events, &quot;company&quot;, &quot;acme&quot;)).toHaveLength(2);
   });
 
-  it("filters by user", () => {
-    expect(filteredEvents(events, "user", "bob")).toEqual([{ company: "Beta", user: "Bob" }]);
+  it(&quot;filters by user&quot;, () =&gt; {
+    expect(filteredEvents(events, &quot;user&quot;, &quot;bob&quot;)).toEqual([{ company: &quot;Beta&quot;, user: &quot;Bob&quot; }]);
   });
 
-  it("is case insensitive", () => {
-    expect(filteredEvents(events, "user", "ALICE")).toEqual([{ company: "Acme", user: "Alice" }]);
+  it(&quot;is case insensitive&quot;, () =&gt; {
+    expect(filteredEvents(events, &quot;user&quot;, &quot;ALICE&quot;)).toEqual([{ company: &quot;Acme&quot;, user: &quot;Alice&quot; }]);
   });
 
-  it("returns empty if no match", () => {
-    expect(filteredEvents(events, "company", "gamma")).toEqual([]);
+  it(&quot;returns empty if no match&quot;, () =&gt; {
+    expect(filteredEvents(events, &quot;company&quot;, &quot;gamma&quot;)).toEqual([]);
   });
 });
-</pre>
-
+</code></pre>
 <h5 id="getmonthnamejs-test">getMonthName.js test</h5>
 <h6 id="function-script-getmonthname">function script getMonthName</h6>
-<pre>
-export function getMonthName(year, month) {
+<pre><code>export function getMonthName(year, month) {
   const date = new Date(year, month);
-  const name = date.toLocaleString("default", { month: "long" });
+  const name = date.toLocaleString(&quot;default&quot;, { month: &quot;long&quot; });
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
-</pre>
-
+</code></pre>
 <h6 id="test-script-getmonthname">test script getMonthName</h6>
-<pre>
-import { describe, it, expect } from "vitest";
-import { getMonthName } from "@/functions-for-testing/getMonthName.js";
+<pre><code>import { describe, it, expect } from &quot;vitest&quot;;
+import { getMonthName } from &quot;@/functions-for-testing/getMonthName.js&quot;;
 
-describe("getMonthName", () => {
-  it("returns the correct month name with capital first letter", () => {
-    expect(getMonthName(2024, 0)).toBe("Januar");
-    expect(getMonthName(2024, 5)).toBe("Juni");
+describe(&quot;getMonthName&quot;, () =&gt; {
+  it(&quot;returns the correct month name with capital first letter&quot;, () =&gt; {
+    expect(getMonthName(2024, 0)).toBe(&quot;Januar&quot;);
+    expect(getMonthName(2024, 5)).toBe(&quot;Juni&quot;);
   });
 });
-</pre>
-
+</code></pre>
 <h5 id="fetchoptionsjs-test">fetchOptions.js test</h5>
 <h6 id="function-script-fetchoptions">function script fetchOptions</h6>
-<pre>
-export async function fetchOptionsFromFirestore(getDoc, doc, db, options, isLoadingOptions, errorMessage) {
+<pre><code>export async function fetchOptionsFromFirestore(getDoc, doc, db, options, isLoadingOptions, errorMessage) {
   try {
     isLoadingOptions.value = true;
-    const collections = ["schedules", "companies", "locations", "users", "objects"];
-    const fetchPromises = collections.map((collectionName) =>
-      getDoc(doc(db, "data", collectionName)).then((snapshot) => {
+    const collections = [&quot;schedules&quot;, &quot;companies&quot;, &quot;locations&quot;, &quot;users&quot;, &quot;objects&quot;];
+    const fetchPromises = collections.map((collectionName) =&gt;
+      getDoc(doc(db, &quot;data&quot;, collectionName)).then((snapshot) =&gt; {
         if (snapshot.exists()) {
           options[collectionName] = Object.values(snapshot.data() || {});
         }
@@ -283,26 +274,24 @@ export async function fetchOptionsFromFirestore(getDoc, doc, db, options, isLoad
   }
 }
 
-</pre>
-
+</code></pre>
 <h6 id="test-script-fetchoptions">test script fetchOptions</h6>
-<pre>
-import { fetchOptionsFromFirestore } from "@/functions-for-testing/fetchOptions.js";
-import { describe, it, expect, vi } from "vitest";
+<pre><code>import { fetchOptionsFromFirestore } from &quot;@/functions-for-testing/fetchOptions.js&quot;;
+import { describe, it, expect, vi } from &quot;vitest&quot;;
 
-describe("fetchOptionsFromFirestore", () => {
-  it("fetches and sets options for all collections", async () => {
-    const mockSnapshot = (data) => ({
-      exists: () => true,
-      data: () => data,
+describe(&quot;fetchOptionsFromFirestore&quot;, () =&gt; {
+  it(&quot;fetches and sets options for all collections&quot;, async () =&gt; {
+    const mockSnapshot = (data) =&gt; ({
+      exists: () =&gt; true,
+      data: () =&gt; data,
     });
 
-    const getDoc = vi.fn((docRef) => {
+    const getDoc = vi.fn((docRef) =&gt; {
       const name = docRef.collectionName;
-      return Promise.resolve(mockSnapshot({ a: name + "1", b: name + "2" }));
+      return Promise.resolve(mockSnapshot({ a: name + &quot;1&quot;, b: name + &quot;2&quot; }));
     });
 
-    const doc = (db, path, collectionName) => ({
+    const doc = (db, path, collectionName) =&gt; ({
       db,
       path,
       collectionName,
@@ -311,25 +300,23 @@ describe("fetchOptionsFromFirestore", () => {
     const db = {};
     const options = { schedules: [], companies: [], locations: [], users: [], objects: [] };
     const isLoadingOptions = { value: false };
-    const errorMessage = { value: "" };
+    const errorMessage = { value: &quot;&quot; };
 
     await fetchOptionsFromFirestore(getDoc, doc, db, options, isLoadingOptions, errorMessage);
 
-    expect(options.schedules).toEqual(["schedules1", "schedules2"]);
-    expect(options.companies).toEqual(["companies1", "companies2"]);
-    expect(options.locations).toEqual(["locations1", "locations2"]);
-    expect(options.users).toEqual(["users1", "users2"]);
-    expect(options.objects).toEqual(["objects1", "objects2"]);
+    expect(options.schedules).toEqual([&quot;schedules1&quot;, &quot;schedules2&quot;]);
+    expect(options.companies).toEqual([&quot;companies1&quot;, &quot;companies2&quot;]);
+    expect(options.locations).toEqual([&quot;locations1&quot;, &quot;locations2&quot;]);
+    expect(options.users).toEqual([&quot;users1&quot;, &quot;users2&quot;]);
+    expect(options.objects).toEqual([&quot;objects1&quot;, &quot;objects2&quot;]);
     expect(isLoadingOptions.value).toBe(false);
-    expect(errorMessage.value).toBe("");
+    expect(errorMessage.value).toBe(&quot;&quot;);
   });
 });
-</pre>
-
+</code></pre>
 <h5 id="saveeventjs-test">saveEvent.js test</h5>
 <h6 id="function-script-saveevent">function script saveEvent</h6>
-<pre>
-export async function saveEvent({ formData, db, addDoc, collection, handleSaveSuccess }) {
+<pre><code>export async function saveEvent({ formData, db, addDoc, collection, handleSaveSuccess }) {
   const eventData = {
     startDate: formData.startDate,
     schedule: formData.schedule,
@@ -339,81 +326,77 @@ export async function saveEvent({ formData, db, addDoc, collection, handleSaveSu
     object: formData.object,
   };
   handleSaveSuccess();
-  await addDoc(collection(db, "events"), eventData);
+  await addDoc(collection(db, &quot;events&quot;), eventData);
 }
 
-</pre>
-
+</code></pre>
 <h6 id="test-script-saveevent">test script saveEvent</h6>
-<pre>
-import { describe, it, expect, vi } from "vitest";
-import { saveEvent } from "@/functions-for-testing/saveEvent.js";
+<pre><code>import { describe, it, expect, vi } from &quot;vitest&quot;;
+import { saveEvent } from &quot;@/functions-for-testing/saveEvent.js&quot;;
 
-describe("saveEvent", () => {
-  it("calls addDoc with correct data and calls handleSaveSuccess", async () => {
-    const addDoc = vi.fn(() => Promise.resolve());
+describe(&quot;saveEvent&quot;, () =&gt; {
+  it(&quot;calls addDoc with correct data and calls handleSaveSuccess&quot;, async () =&gt; {
+    const addDoc = vi.fn(() =&gt; Promise.resolve());
     const collection = vi.fn();
     const db = {};
     const handleSaveSuccess = vi.fn();
 
     const formData = {
-      startDate: "2024-05-29",
-      schedule: "A",
-      company: "B",
-      location: "C",
-      user: "D",
-      object: "E",
+      startDate: &quot;2024-05-29&quot;,
+      schedule: &quot;A&quot;,
+      company: &quot;B&quot;,
+      location: &quot;C&quot;,
+      user: &quot;D&quot;,
+      object: &quot;E&quot;,
     };
 
     await saveEvent({ formData, db, addDoc, collection, handleSaveSuccess });
 
     expect(addDoc).toHaveBeenCalledWith(
-      collection(db, "events"),
+      collection(db, &quot;events&quot;),
       {
-        startDate: "2024-05-29",
-        schedule: "A",
-        company: "B",
-        location: "C",
-        user: "D",
-        object: "E",
+        startDate: &quot;2024-05-29&quot;,
+        schedule: &quot;A&quot;,
+        company: &quot;B&quot;,
+        location: &quot;C&quot;,
+        user: &quot;D&quot;,
+        object: &quot;E&quot;,
       },
     );
     expect(handleSaveSuccess).toHaveBeenCalled();
   });
 });
-</pre>
-
+</code></pre>
 <h5 id="usecalendarjs-test">useCalendar.js test</h5>
 <p>Denne test er kørt på filen useCalendar.js. Hele filen er exporteret som en function der bliver brugt flere steder i kalenderen, og der er derfor mange variabler der skal returne det rigtige data </p>
 <h6 id="script-for-test">script for test</h6>
-<pre>
+<pre><code>
+import { describe, it, expect } from &quot;vitest&quot;;
+import { useCalendar } from &quot;@/composables/useCalendar.js&quot;;
 
-import { describe, it, expect } from "vitest";
-import { useCalendar } from "@/composables/useCalendar.js";
-
-describe("useCalendar", () => {
-  it("returns current year and month", () => {
+describe(&quot;useCalendar&quot;, () =&gt; {
+  it(&quot;returns current year and month&quot;, () =&gt; {
     const { currentYear, currentMonth } = useCalendar();
     const now = new Date();
     expect(currentYear.value).toBe(now.getFullYear());
     expect(currentMonth.value).toBe(now.getMonth());
   });
 
-  it("nextMonth increments the month", () => {
+  it(&quot;nextMonth increments the month&quot;, () =&gt; {
     const { currentMonth, nextMonth } = useCalendar();
     currentMonth.value = 5;
     nextMonth();
     expect(currentMonth.value).toBe(6);
   });
 
-  it("prevMonth decrements the month", () => {
+  it(&quot;prevMonth decrements the month&quot;, () =&gt; {
     const { currentMonth, prevMonth } = useCalendar();
     currentMonth.value = 5;
     prevMonth();
     expect(currentMonth.value).toBe(4);
   });
 
-  it("nextMonth wraps from December to January and increments year", () => {
+  it(&quot;nextMonth wraps from December to January and increments year&quot;, () =&gt; {
     const { currentMonth, currentYear, nextMonth } = useCalendar();
     currentMonth.value = 11;
     currentYear.value = 2024;
@@ -422,7 +405,7 @@ describe("useCalendar", () => {
     expect(currentYear.value).toBe(2025);
   });
 
-  it("prevMonth wraps from January to December and decrements year", () => {
+  it(&quot;prevMonth wraps from January to December and decrements year&quot;, () =&gt; {
     const { currentMonth, currentYear, prevMonth } = useCalendar();
     currentMonth.value = 0;
     currentYear.value = 2024;
@@ -431,13 +414,13 @@ describe("useCalendar", () => {
     expect(currentYear.value).toBe(2023);
   });
 
-  it("daysInMonth returns 42 days", () => {
+  it(&quot;daysInMonth returns 42 days&quot;, () =&gt; {
     const { daysInMonth } = useCalendar();
     expect(daysInMonth.value.length).toBe(42);
   });
 });
 
-</pre></p>
+</code></pre></p>
     </article>
 </section>
             <!-- endblock -->

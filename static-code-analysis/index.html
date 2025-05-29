@@ -188,44 +188,43 @@
         <p><h1 id="static-code-analysis">Static Code Analysis</h1>
 <p>Vi brugte ESLint til statisk kodeanalyse. Der blev som udgangspunkt lavet linting inden hvert push. 
 Vores opsætning for regler samt ignorerede filer og mapper var som følger:</p>
-<pre>
-import js from "@eslint/js";
-import pluginVue from "eslint-plugin-vue";
-import globals from "globals";
-import pluginVitest from "@vitest/eslint-plugin";
-import pluginCypress from "eslint-plugin-cypress/flat";
+<pre><code>import js from &quot;@eslint/js&quot;;
+import pluginVue from &quot;eslint-plugin-vue&quot;;
+import globals from &quot;globals&quot;;
+import pluginVitest from &quot;@vitest/eslint-plugin&quot;;
+import pluginCypress from &quot;eslint-plugin-cypress/flat&quot;;
 
 export default [
   {
-    name: "app/files-to-lint",
-    files: ["**/*.{js,mjs,jsx,vue}"],
+    name: &quot;app/files-to-lint&quot;,
+    files: [&quot;**/*.{js,mjs,jsx,vue}&quot;],
   },
 
   {
-    name: "app/files-to-ignore",
+    name: &quot;app/files-to-ignore&quot;,
     ignores: [
-      "**/dist/**", // Build output
-      "**/dist-ssr/**", // Server-side rendered build output
-      "**/coverage/**", // Test coverage reports
-      "**/node_modules/**", // Dependencies
-      "**/build/**", // Build folder
-      "**/*.min.js", // Minified JavaScript files
-      "**/.cache/**", // Cache files
-      "**/temp/**", // Temporary files
-      "**/.env", // Environment variables
-      "**/.env.*", // Environment variables with extensions
-      "**/*.log", // Log files
-      "**/.vscode/**", // VSCode settings
-      "**/.idea/**", // IntelliJ IDEA settings
-      "**/cypress/videos/**", // Cypress videos
-      "**/cypress/screenshots/**", // Cypress screenshots
-      "**/cypress/fixtures/**", // Cypress fixtures
-      "**/cypress/support/**", // Cypress support files
-      "**/test-output/**", // Test output
-      "**/reports/**", // Reports
-      "**/*.generated.*", // Generated files
-      "**/*.bak", // Backup files
-      "**/*.config.*", // Configuration files
+      &quot;**/dist/**&quot;, // Build output
+      &quot;**/dist-ssr/**&quot;, // Server-side rendered build output
+      &quot;**/coverage/**&quot;, // Test coverage reports
+      &quot;**/node_modules/**&quot;, // Dependencies
+      &quot;**/build/**&quot;, // Build folder
+      &quot;**/*.min.js&quot;, // Minified JavaScript files
+      &quot;**/.cache/**&quot;, // Cache files
+      &quot;**/temp/**&quot;, // Temporary files
+      &quot;**/.env&quot;, // Environment variables
+      &quot;**/.env.*&quot;, // Environment variables with extensions
+      &quot;**/*.log&quot;, // Log files
+      &quot;**/.vscode/**&quot;, // VSCode settings
+      &quot;**/.idea/**&quot;, // IntelliJ IDEA settings
+      &quot;**/cypress/videos/**&quot;, // Cypress videos
+      &quot;**/cypress/screenshots/**&quot;, // Cypress screenshots
+      &quot;**/cypress/fixtures/**&quot;, // Cypress fixtures
+      &quot;**/cypress/support/**&quot;, // Cypress support files
+      &quot;**/test-output/**&quot;, // Test output
+      &quot;**/reports/**&quot;, // Reports
+      &quot;**/*.generated.*&quot;, // Generated files
+      &quot;**/*.bak&quot;, // Backup files
+      &quot;**/*.config.*&quot;, // Configuration files
     ],
   },
 
@@ -238,40 +237,39 @@ export default [
   },
 
   js.configs.recommended,
-  ...pluginVue.configs["flat/essential"],
+  ...pluginVue.configs[&quot;flat/essential&quot;],
 
   {
     ...pluginVitest.configs.recommended,
-    files: ["src/**/__tests__/*"],
+    files: [&quot;src/**/__tests__/*&quot;],
   },
 
   {
     ...pluginCypress.configs.recommended,
-    files: ["cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}", "cypress/support/**/*.{js,ts,jsx,tsx}"],
+    files: [&quot;cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}&quot;, &quot;cypress/support/**/*.{js,ts,jsx,tsx}&quot;],
   },
 
   {
     rules: {
-      "comma-dangle": ["error", "always-multiline"],
-      eqeqeq: ["error", "always"],
-      indent: ["error", 2],
-      "no-eval": ["error"],
-      "no-trailing-spaces": ["error"],
-      "no-unused-vars": ["error"],
-      "no-var": ["error"],
-      "prefer-const": ["error"],
-      "no-console": ["warn", { allow: ["warn", "error"] }],
-      complexity: ["warn", { max: 20 }],
-      "no-param-reassign": ["error"],
-      quotes: ["error", "double"],
-      semi: ["error", "always"],
-      "vue/component-name-in-template-casing": ["error", "PascalCase"],
-      "vue/no-unused-components": ["error"],
+      &quot;comma-dangle&quot;: [&quot;error&quot;, &quot;always-multiline&quot;],
+      eqeqeq: [&quot;error&quot;, &quot;always&quot;],
+      indent: [&quot;error&quot;, 2],
+      &quot;no-eval&quot;: [&quot;error&quot;],
+      &quot;no-trailing-spaces&quot;: [&quot;error&quot;],
+      &quot;no-unused-vars&quot;: [&quot;error&quot;],
+      &quot;no-var&quot;: [&quot;error&quot;],
+      &quot;prefer-const&quot;: [&quot;error&quot;],
+      &quot;no-console&quot;: [&quot;warn&quot;, { allow: [&quot;warn&quot;, &quot;error&quot;] }],
+      complexity: [&quot;warn&quot;, { max: 20 }],
+      &quot;no-param-reassign&quot;: [&quot;error&quot;],
+      quotes: [&quot;error&quot;, &quot;double&quot;],
+      semi: [&quot;error&quot;, &quot;always&quot;],
+      &quot;vue/component-name-in-template-casing&quot;: [&quot;error&quot;, &quot;PascalCase&quot;],
+      &quot;vue/no-unused-components&quot;: [&quot;error&quot;],
     },
   },
 ];
-
-</pre></p>
+</code></pre></p>
     </article>
 </section>
             <!-- endblock -->
