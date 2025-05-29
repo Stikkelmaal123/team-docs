@@ -3,7 +3,7 @@
 Vi brugte ESLint til statisk kodeanalyse. Der blev som udgangspunkt lavet linting inden hvert push. 
 Vores opsætning for regler samt ignorerede filer og mapper var som følger:
 
-<pre>
+```
 import js from "@eslint/js";
 import pluginVue from "eslint-plugin-vue";
 import globals from "globals";
@@ -85,5 +85,4 @@ export default [
     },
   },
 ];
-
-</pre>
+```

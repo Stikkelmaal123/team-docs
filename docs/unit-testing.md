@@ -9,7 +9,7 @@ Sidste test er i virkeligheden flere test der kører på en fil, men det gav men
 
 ##### filterEvents.js test
 ###### function script filterEvents
-<pre>
+```
 export function filteredEvents(events, selectedFilter, selectedValue) {
   if (!selectedFilter || !selectedValue) return events;
   return events.filter((event) => {
@@ -18,10 +18,10 @@ export function filteredEvents(events, selectedFilter, selectedValue) {
     return value.toLowerCase().includes(selectedValue.toLowerCase());
   });
 }
-</pre>
+```
 
 ###### test script filterEvents
-<pre>
+```
 import { describe, it, expect } from "vitest";
 import { filteredEvents } from "@/functions-for-testing/filterEvents.js";
 
@@ -52,20 +52,20 @@ describe("filteredEvents", () => {
     expect(filteredEvents(events, "company", "gamma")).toEqual([]);
   });
 });
-</pre>
+```
 
 ##### getMonthName.js test
 ###### function script getMonthName
-<pre>
+```
 export function getMonthName(year, month) {
   const date = new Date(year, month);
   const name = date.toLocaleString("default", { month: "long" });
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
-</pre>
+```
 
 ###### test script getMonthName
-<pre>
+```
 import { describe, it, expect } from "vitest";
 import { getMonthName } from "@/functions-for-testing/getMonthName.js";
 
@@ -75,11 +75,11 @@ describe("getMonthName", () => {
     expect(getMonthName(2024, 5)).toBe("Juni");
   });
 });
-</pre>
+```
 
 ##### fetchOptions.js test
 ###### function script fetchOptions
-<pre>
+```
 export async function fetchOptionsFromFirestore(getDoc, doc, db, options, isLoadingOptions, errorMessage) {
   try {
     isLoadingOptions.value = true;
@@ -99,10 +99,10 @@ export async function fetchOptionsFromFirestore(getDoc, doc, db, options, isLoad
   }
 }
 
-</pre>
+```
 
 ###### test script fetchOptions
-<pre>
+```
 import { fetchOptionsFromFirestore } from "@/functions-for-testing/fetchOptions.js";
 import { describe, it, expect, vi } from "vitest";
 
@@ -140,11 +140,11 @@ describe("fetchOptionsFromFirestore", () => {
     expect(errorMessage.value).toBe("");
   });
 });
-</pre>
+```
 
 ##### saveEvent.js test
 ###### function script saveEvent
-<pre>
+```
 export async function saveEvent({ formData, db, addDoc, collection, handleSaveSuccess }) {
   const eventData = {
     startDate: formData.startDate,
@@ -158,10 +158,10 @@ export async function saveEvent({ formData, db, addDoc, collection, handleSaveSu
   await addDoc(collection(db, "events"), eventData);
 }
 
-</pre>
+```
 
 ###### test script saveEvent
-<pre>
+```
 import { describe, it, expect, vi } from "vitest";
 import { saveEvent } from "@/functions-for-testing/saveEvent.js";
 
@@ -197,13 +197,13 @@ describe("saveEvent", () => {
     expect(handleSaveSuccess).toHaveBeenCalled();
   });
 });
-</pre>
+```
 
 
 ##### useCalendar.js test
 Denne test er kørt på filen useCalendar.js. Hele filen er exporteret som en function der bliver brugt flere steder i kalenderen, og der er derfor mange variabler der skal returne det rigtige data 
 ###### script for test
-<pre>
+```
 
 import { describe, it, expect } from "vitest";
 import { useCalendar } from "@/composables/useCalendar.js";
@@ -254,4 +254,4 @@ describe("useCalendar", () => {
   });
 });
 
-</pre>
+```
