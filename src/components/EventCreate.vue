@@ -61,11 +61,9 @@ function handleFetchError(error) {
   errorMessage.value = `Kunne ikke hente data fra databasen: ${error.message || "Ukendt fejl"}`;
 }
 
-
-
 async function saveEvent() {
   const eventData = {
-    startDate: formData.startDate, // DATE HANDLING: save formatted date to Firestore
+    startDate: formData.startDate,
     schedule: formData.schedule,
     company: formData.company,
     location: formData.location,
