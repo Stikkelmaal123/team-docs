@@ -1,9 +1,9 @@
-describe("Create Event", () => {
+describe("Delete Event", () => {
   beforeEach(() => {
     cy.visit("/");
   });
 
-  it("should complete the full create event flow", () => {
+  it("find a specific event and delete it", () => {
     // Login with valid credentials
     cy.get('.login-page__input[type="email"]').type("john@doe.com");
     cy.get('.login-page__input[type="password"]').type("123456");
@@ -27,13 +27,11 @@ describe("Create Event", () => {
     cy.contains(".event-item__title", "Ryd Vinduer").parent().find(".event-item__edit-btn").click();
     cy.get(".event-modal").should("be.visible");
 
-    cy.get(".event-modal__button--delete").click();
-
     cy.window().then((win) => {
       cy.stub(win, "alert").as("windowAlert");
     });
 
-    cy.get(".event-modal__button--save").click();
+    cy.get(".event-modal__button--delete").click();
 
     // Verify the alert was called with the correct message
     cy.get("@windowAlert").should("have.been.calledWith", "Event deleted successfully.");
