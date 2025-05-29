@@ -192,14 +192,12 @@ strukturen og læsbarheden blev forbedret.</p>
 <p>[Test Case 1]
 CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat ind i main.scss filen, så stylingen for dette var samlet. </p>
 <p><strong>Før:</strong></p>
-<pre>
-///    
-<style lang="scss" scoped>
-@use "@/assets/main.scss";
+<pre><code>&lt;style lang=&quot;scss&quot; scoped&gt;
+@use &quot;@/assets/main.scss&quot;;
 .calendar{
     display: flex;
 
-        &__nav-button {
+        &amp;__nav-button {
             background: none;
             border: none;
             font-size: 2rem;
@@ -207,61 +205,45 @@ CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat in
             margin: 0 1rem;
         }
 }
-</style>
-</pre>
-
-<pre><code>
+&lt;/style&gt;
 </code></pre>
 <p><strong>Efter:</strong></p>
-<pre>
-///     
-.calendar{
+<pre><code>.calendar{
 display: flex;
 justify-content: space-between;
-    &__nav-button {
+    &amp;__nav-button {
         background: none;
         border: none;
         font-size: 2rem;
         cursor: pointer;
         margin: 0 1rem;
 
-        &--container {
+        &amp;--container {
             display: flex;
             align-items: center;
             justify-content: center;
         }
     }   
 }
-</pre>
-
+</code></pre>
 <p>[Test Case 2]
     Inde i FilterRadio.vue blev der addet et span closing tag, så strukturen var komplet.</p>
 <p><strong>Før:</strong></p>
-<pre>
-///
-<span class="filter__radio">
-    <span class="filter__radio-dot" />
-</span>
-<div class="filter__content">
-</pre>
-
-<pre><code>
+<pre><code>&lt;span class=&quot;filter__radio&quot;&gt;
+    &lt;span class=&quot;filter__radio-dot&quot; /&gt;
+&lt;/span&gt;
+&lt;div class=&quot;filter__content&quot;&gt;
 </code></pre>
 <p><strong>Efter:</strong></p>
-<pre>
-///     
-<span class="filter__radio">
-    <span class="filter__radio-dot"></span>
-</span>
-<div class="filter__content">
-</pre>
-
+<pre><code>&lt;span class=&quot;filter__radio&quot;&gt;
+    &lt;span class=&quot;filter__radio-dot&quot;&gt;&lt;/span&gt;
+&lt;/span&gt;
+&lt;div class=&quot;filter__content&quot;&gt;
+</code></pre>
 <p>[Test Case 3]
     I filen DayCell.vue blev en class omskrevet til at passe strukturen BEM, så stylingen der ellers lå scoped i samme fil kunne rykkes ind i main.scss filen. Hermed var stylingen for DayCell også samlet.</p>
 <p><strong>Før:</strong></p>
-<pre>
-///     
-<div v-if="eventCount > 0" class="event-count-badge">
+<pre><code>&lt;div v-if=&quot;eventCount &gt; 0&quot; class=&quot;event-count-badge&quot;&gt;
 
 .event-count-badge {
      border: 1px solid #446A5A;
@@ -271,14 +253,11 @@ justify-content: space-between;
     align-items: flex-start;
     padding: 0 0.2rem 2rem 0.2rem;
 }
-</pre>
-
+</code></pre>
 <p><strong>Efter:</strong></p>
-<pre>
-///    
-<div v-if="eventCount > 0" class="calendar__cell--event-count">
+<pre><code>&lt;div v-if=&quot;eventCount &gt; 0&quot; class=&quot;calendar__cell--event-count&quot;&gt;
 
-    &--event-count{
+    &amp;--event-count{
     border: 1px solid #446A5A;
     border-radius: 6px;
     display: flex;
@@ -286,7 +265,7 @@ justify-content: space-between;
     align-items: flex-start;
     padding: 0 0.2rem 2rem 0.2rem;
  }
-</pre></p>
+</code></pre></p>
     </article>
 </section>
             <!-- endblock -->
