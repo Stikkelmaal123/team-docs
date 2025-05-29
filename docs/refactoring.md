@@ -3,10 +3,8 @@
 Vi har undervejs i processen refaktoreret i koden, for at omskrive eksisterende kode så kvaliteten, 
 strukturen og læsbarheden blev forbedret.
 
-## Examples: 
+## Eksempler: 
 
-
-[Test Case 1]
 CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat ind i main.scss filen, så stylingen for dette var samlet. 
    
 **Før:**
@@ -50,8 +48,8 @@ justify-content: space-between;
 }
 ```
 
-[Test Case 2]
-    Inde i FilterRadio.vue blev der addet et span closing tag, så strukturen var komplet.
+
+Inde i FilterRadio.vue blev der addet et span closing tag, så strukturen var komplet.
 
 **Før:**
 ```
@@ -69,8 +67,8 @@ justify-content: space-between;
 <div class="filter__content">
 ```
 
-[Test Case 3]
-    I filen DayCell.vue blev en class omskrevet til at passe strukturen BEM, så stylingen der ellers lå scoped i samme fil kunne rykkes ind i main.scss filen. Hermed var stylingen for DayCell også samlet.
+
+I filen DayCell.vue blev en class omskrevet til at passe strukturen BEM, så stylingen der ellers lå scoped i samme fil kunne rykkes ind i main.scss filen. Hermed var stylingen for DayCell også samlet.
 
 **Før:**
 ```    
