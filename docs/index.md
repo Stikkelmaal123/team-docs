@@ -1,6 +1,6 @@
 # "Velkommen til versionstyingsafleveringen"
 
-Dette er en pages-site omkring versionstyring af dette site: https://github.com/Stikkelmaal123/team-docs
+Dette er en pages-site omkring versionstyring af dette site: [https://github.com/Stikkelmaal123/team-docs](https://github.com/Stikkelmaal123/team-docs)
 
 ## Quick Links
 

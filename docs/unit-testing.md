@@ -1,12 +1,9 @@
 # Unit Testing
 
-We implemented unit tests using [Framework Name]. Below are the details:
+## Der er blevet udarbejdet 5 unit test med frameworket vitest. 
 
-- **Number of tests**: 5
-- **Coverage**: [Coverage Percentage]
-
-Example test cases:
-1. **useCalendar.js test** 
+### Tests
+ ### 1. useCalendar.js test 
  Denne test er kørt på filen useCalendar.js. Hele filen er exporteret som en function der bliver brugt flere steder i kalenderen, og der er derfor mange variabler der skal returne det rigtige data 
 ### script for test 1
 <pre>
