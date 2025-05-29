@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <title>Guidelines - Team Documentation</title>
+        <title>Static-code-analysis - Team Documentation</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -73,17 +73,45 @@
                 </a>
             </li>
             <li class="drac-box">
-                <a href="../about/"
+                <a href="../git-strategy/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
-                    About
+                    Git-stragegy
                 </a>
             </li>
             <li class="drac-box">
                 <a href="./"
                     class=" active 
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
-                    Guidelines
+                    Static-code-analysis
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../unit-testing/"
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Unit-testing
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../e2e-testing/"
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    E2e-testing
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../refactoring/"
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    Refactoring
+                </a>
+            </li>
+            <li class="drac-box">
+                <a href="../github-actions/"
+                    class="
+                    drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
+                    GitHub-actions
                 </a>
             </li>
         </ul>
@@ -114,14 +142,14 @@
         <div class="container">
             <div class="row row-preview">
                 <div class="col">
-                    <a href="../about/"
+                    <a href="../git-strategy/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </div>
                 <div class="col">
-                    <a 
-                        class="btn-preview drac-btn drac-text-white--hover disabled" style="padding-left: 3%;">
+                    <a href="../unit-testing/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </div>
@@ -157,17 +185,93 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h1 id="team-guidelines">Team Guidelines</h1>
-<h2 id="communication">Communication</h2>
-<pre><code>- Check email at least twice daily
-- Respond to Slack messages within 4 seconds
-- Attend daily standup meetings
-</code></pre>
-<h2 id="development-workflow">Development Workflow</h2>
-<pre><code>1. Create a branch for each feature
-2. Submit pull request for review
-3. Ensure test pass before merging
-</code></pre></p>
+        <p><h1 id="static-code-analysis">Static Code Analysis</h1>
+<p>Vi brugte ESLint til statisk kodeanalyse. Der blev som udgangspunkt lavet linting inden hvert push. 
+Vores opsætning for regler samt ignorerede filer og mapper var som følger:</p>
+<pre>
+import js from "@eslint/js";
+import pluginVue from "eslint-plugin-vue";
+import globals from "globals";
+import pluginVitest from "@vitest/eslint-plugin";
+import pluginCypress from "eslint-plugin-cypress/flat";
+
+export default [
+  {
+    name: "app/files-to-lint",
+    files: ["**/*.{js,mjs,jsx,vue}"],
+  },
+
+  {
+    name: "app/files-to-ignore",
+    ignores: [
+      "**/dist/**", // Build output
+      "**/dist-ssr/**", // Server-side rendered build output
+      "**/coverage/**", // Test coverage reports
+      "**/node_modules/**", // Dependencies
+      "**/build/**", // Build folder
+      "**/*.min.js", // Minified JavaScript files
+      "**/.cache/**", // Cache files
+      "**/temp/**", // Temporary files
+      "**/.env", // Environment variables
+      "**/.env.*", // Environment variables with extensions
+      "**/*.log", // Log files
+      "**/.vscode/**", // VSCode settings
+      "**/.idea/**", // IntelliJ IDEA settings
+      "**/cypress/videos/**", // Cypress videos
+      "**/cypress/screenshots/**", // Cypress screenshots
+      "**/cypress/fixtures/**", // Cypress fixtures
+      "**/cypress/support/**", // Cypress support files
+      "**/test-output/**", // Test output
+      "**/reports/**", // Reports
+      "**/*.generated.*", // Generated files
+      "**/*.bak", // Backup files
+      "**/*.config.*", // Configuration files
+    ],
+  },
+
+  {
+    languageOptions: {
+      globals: {
+        ...globals.browser,
+      },
+    },
+  },
+
+  js.configs.recommended,
+  ...pluginVue.configs["flat/essential"],
+
+  {
+    ...pluginVitest.configs.recommended,
+    files: ["src/**/__tests__/*"],
+  },
+
+  {
+    ...pluginCypress.configs.recommended,
+    files: ["cypress/e2e/**/*.{cy,spec}.{js,ts,jsx,tsx}", "cypress/support/**/*.{js,ts,jsx,tsx}"],
+  },
+
+  {
+    rules: {
+      "comma-dangle": ["error", "always-multiline"],
+      eqeqeq: ["error", "always"],
+      indent: ["error", 2],
+      "no-eval": ["error"],
+      "no-trailing-spaces": ["error"],
+      "no-unused-vars": ["error"],
+      "no-var": ["error"],
+      "prefer-const": ["error"],
+      "no-console": ["warn", { allow: ["warn", "error"] }],
+      complexity: ["warn", { max: 20 }],
+      "no-param-reassign": ["error"],
+      quotes: ["error", "double"],
+      semi: ["error", "always"],
+      "vue/component-name-in-template-casing": ["error", "PascalCase"],
+      "vue/no-unused-components": ["error"],
+    },
+  },
+];
+
+</pre></p>
     </article>
 </section>
             <!-- endblock -->

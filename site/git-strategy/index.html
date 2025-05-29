@@ -2,24 +2,24 @@
 <html lang="en">
 
 <head>
-        <title>Team Documentation</title>
+        <title>Git-stragegy - Team Documentation</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <meta name="description" content="Documentation for the team">
+        
         
         <meta name="author" content="Mikkel">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" href="assets/css/darcula-highlight.min.css">
+            <link rel="stylesheet" href="../assets/css/darcula-highlight.min.css">
 
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/dracula-ui.min.css">
-        <link rel="stylesheet" href="assets/css/mkdocs.min.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../assets/css/mkdocs.min.css">
 
         
-            <link  rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+            <link  rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
         
             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
                 <script>hljs.initHighlightingOnLoad();</script>
@@ -66,49 +66,49 @@
         <ul class="mb-5 drac-list drac-list-none">
             
             <li class="drac-box">
-                <a href="."
-                    class=" active 
+                <a href=".."
+                    class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Home
                 </a>
             </li>
             <li class="drac-box">
-                <a href="git-strategy/"
-                    class="
+                <a href="./"
+                    class=" active 
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Git-stragegy
                 </a>
             </li>
             <li class="drac-box">
-                <a href="static-code-analysis/"
+                <a href="../static-code-analysis/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Static-code-analysis
                 </a>
             </li>
             <li class="drac-box">
-                <a href="unit-testing/"
+                <a href="../unit-testing/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Unit-testing
                 </a>
             </li>
             <li class="drac-box">
-                <a href="e2e-testing/"
+                <a href="../e2e-testing/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     E2e-testing
                 </a>
             </li>
             <li class="drac-box">
-                <a href="refactoring/"
+                <a href="../refactoring/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Refactoring
                 </a>
             </li>
             <li class="drac-box">
-                <a href="github-actions/"
+                <a href="../github-actions/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     GitHub-actions
@@ -142,13 +142,13 @@
         <div class="container">
             <div class="row row-preview">
                 <div class="col">
-                    <a 
-                        class="btn-preview drac-btn drac-text-white--hover disabled">
+                    <a href=".."
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </div>
                 <div class="col">
-                    <a href="git-strategy/"
+                    <a href="../static-code-analysis/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
@@ -160,7 +160,7 @@
 
                     <!-- block search -->
                     <li class="nav-item"><div role="search" class="search-box">
-	<form id="rtd-search-form" class="wy-form" action="./search.html" method="get">
+	<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
 		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary"
 		placeholder="Search docs" title="Type search term here" />
 	</form>
@@ -185,16 +185,25 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h1 id="velkommen-til-versionstyingsafleveringen">"Velkommen til versionstyingsafleveringen"</h1>
-<p>Dette er en pages-site omkring versionstyring af dette site: <a href="https://github.com/Stikkelmaal123/team-docs">https://github.com/Stikkelmaal123/team-docs</a></p>
-<h2 id="quick-links">Quick Links</h2>
+        <p><h1 id="git-branching-strategy">Git Branching Strategy</h1>
+<h2 id="vi-har-i-gruppen-brugt-en-variant-af-gitflow-som-branching-strategi">Vi har i gruppen brugt en variant af Gitflow som branching strategi.</h2>
 <ul>
-<li><a href="git-strategy/">Git Branching Strategy</a></li>
-<li><a href="static-code-analysis/">Static Code Analysis</a></li>
-<li><a href="unit-testing/">Unit Testing</a></li>
-<li><a href="e2e-testing/">End-to-End Testing</a></li>
-<li><a href="github-actions/">GitHub Actions Workflow</a></li>
-</ul></p>
+<li>At det blev en variant skyldes en misforståelse/sammenblanding af branchingstrategierne, der er redegjort nedenfor hvordan Gitflow er blevet brugt og hvordan det skulle ha været brugt.</li>
+</ul>
+<h3 id="gitflow-er-blevet-brugt-med-flgende-opstning">Gitflow er blevet brugt med følgende opsætning:</h3>
+<ul>
+<li><strong>Main branch</strong>: Bliver brugt til version 1.0</li>
+<li><strong>Developer branch</strong>: Indeholder produktionsklar kode.</li>
+</ul>
+<p>Al udvikling har forgået på developer branchen. Dette har gjort det markant nemmere at følge med i hvad hinanden lavede, men har også krævet langt mere kommunikation end hvis rigtig gitflow var blevet benyttet. </p>
+<h3 id="hvordan-gitflow-skulle-ha-vret-brugt">Hvordan Gitflow skulle ha været brugt:</h3>
+<ul>
+<li><strong>Main branch</strong>: Bliver brugt til version 1.0</li>
+<li><strong>Developer branch</strong>: Indeholder produktionsklar kode.</li>
+<li><strong>Feature branches</strong>: Bliver brugt til udvikling af features.</li>
+<li><strong>Hotfix branches</strong>: Bliver brugt til akutte fixes.</li>
+</ul>
+<p>Hvis de to ekstra branches havde været med under udviklingen af produktet, havde det været væsentligt nemmere at holde overblik over hvad folk manglede og var igang med. Det havde også afhjulpet den kommunikation der skulle være omkring hver gang et gruppemedlem pushede.</p></p>
     </article>
 </section>
             <!-- endblock -->
@@ -213,11 +222,11 @@
 
     </main>
 
-        <script>var base_url = '.';</script>
-        <script src="assets/js/jquery-3.3.1.slim.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/mkdocs.js"></script>
-			<script src="search/main.js" defer></script>
+        <script>var base_url = '..';</script>
+        <script src="../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/mkdocs.js"></script>
+			<script src="../search/main.js" defer></script>
 
 </body>
 

@@ -2,24 +2,24 @@
 <html lang="en">
 
 <head>
-        <title>Team Documentation</title>
+        <title>Unit-testing - Team Documentation</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <meta name="description" content="Documentation for the team">
+        
         
         <meta name="author" content="Mikkel">
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" href="assets/css/darcula-highlight.min.css">
+            <link rel="stylesheet" href="../assets/css/darcula-highlight.min.css">
 
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/dracula-ui.min.css">
-        <link rel="stylesheet" href="assets/css/mkdocs.min.css">
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/dracula-ui.min.css">
+        <link rel="stylesheet" href="../assets/css/mkdocs.min.css">
 
         
-            <link  rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+            <link  rel="icon" type="image/x-icon" href="../assets/img/favicon.ico">
         
             <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
                 <script>hljs.initHighlightingOnLoad();</script>
@@ -66,49 +66,49 @@
         <ul class="mb-5 drac-list drac-list-none">
             
             <li class="drac-box">
-                <a href="."
-                    class=" active 
+                <a href=".."
+                    class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Home
                 </a>
             </li>
             <li class="drac-box">
-                <a href="git-strategy/"
+                <a href="../git-strategy/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Git-stragegy
                 </a>
             </li>
             <li class="drac-box">
-                <a href="static-code-analysis/"
+                <a href="../static-code-analysis/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Static-code-analysis
                 </a>
             </li>
             <li class="drac-box">
-                <a href="unit-testing/"
-                    class="
+                <a href="./"
+                    class=" active 
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Unit-testing
                 </a>
             </li>
             <li class="drac-box">
-                <a href="e2e-testing/"
+                <a href="../e2e-testing/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     E2e-testing
                 </a>
             </li>
             <li class="drac-box">
-                <a href="refactoring/"
+                <a href="../refactoring/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     Refactoring
                 </a>
             </li>
             <li class="drac-box">
-                <a href="github-actions/"
+                <a href="../github-actions/"
                     class="
                     drac-anchor d-inline-flex align-items-center border-0 drac-text-purple--hover">
                     GitHub-actions
@@ -142,13 +142,13 @@
         <div class="container">
             <div class="row row-preview">
                 <div class="col">
-                    <a 
-                        class="btn-preview drac-btn drac-text-white--hover disabled">
+                    <a href="../static-code-analysis/"
+                        class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </div>
                 <div class="col">
-                    <a href="git-strategy/"
+                    <a href="../e2e-testing/"
                         class="btn-preview drac-btn drac-btn-outline drac-text-white drac-text-cyan-green--hover" style="padding-left: 3%;">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
@@ -160,7 +160,7 @@
 
                     <!-- block search -->
                     <li class="nav-item"><div role="search" class="search-box">
-	<form id="rtd-search-form" class="wy-form" action="./search.html" method="get">
+	<form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
 		<input type="text" name="q" class="drac-input drac-input-search drac-input-white drac-text-white drac-bg-black-secondary"
 		placeholder="Search docs" title="Type search term here" />
 	</form>
@@ -185,16 +185,89 @@
             <!-- block content -->
                 <section class="p-md-5 section-content">
     <article>
-        <p><h1 id="velkommen-til-versionstyingsafleveringen">"Velkommen til versionstyingsafleveringen"</h1>
-<p>Dette er en pages-site omkring versionstyring af dette site: <a href="https://github.com/Stikkelmaal123/team-docs">https://github.com/Stikkelmaal123/team-docs</a></p>
-<h2 id="quick-links">Quick Links</h2>
-<ul>
-<li><a href="git-strategy/">Git Branching Strategy</a></li>
-<li><a href="static-code-analysis/">Static Code Analysis</a></li>
-<li><a href="unit-testing/">Unit Testing</a></li>
-<li><a href="e2e-testing/">End-to-End Testing</a></li>
-<li><a href="github-actions/">GitHub Actions Workflow</a></li>
-</ul></p>
+        <p><h1 id="unit-testing">Unit Testing</h1>
+<h2 id="der-er-blevet-udarbejdet-5-unit-test-med-frameworket-vitest">Der er blevet udarbejdet 5 unit test med frameworket vitest.</h2>
+<h3 id="tests">Tests</h3>
+<ol>
+<li><strong>useCalendar.js test</strong> </li>
+<li>Denne test er kørt på filen useCalendar.js. Hele filen er exporteret som en function der bliver brugt flere steder i kalenderen, og der er derfor mange variabler der skal returne det rigtige data </li>
+</ol>
+<h3 id="script-for-test-1">script for test 1</h3>
+<pre>
+
+import { describe, it, expect } from "vitest";
+import { useCalendar } from "@/composables/useCalendar.js";
+
+describe("useCalendar", () => {
+  it("returns current year and month", () => {
+    const { currentYear, currentMonth } = useCalendar();
+    const now = new Date();
+    expect(currentYear.value).toBe(now.getFullYear());
+    expect(currentMonth.value).toBe(now.getMonth());
+  });
+
+  it("nextMonth increments the month", () => {
+    const { currentMonth, nextMonth } = useCalendar();
+    currentMonth.value = 5;
+    nextMonth();
+    expect(currentMonth.value).toBe(6);
+  });
+
+  it("prevMonth decrements the month", () => {
+    const { currentMonth, prevMonth } = useCalendar();
+    currentMonth.value = 5;
+    prevMonth();
+    expect(currentMonth.value).toBe(4);
+  });
+
+  it("nextMonth wraps from December to January and increments year", () => {
+    const { currentMonth, currentYear, nextMonth } = useCalendar();
+    currentMonth.value = 11;
+    currentYear.value = 2024;
+    nextMonth();
+    expect(currentMonth.value).toBe(0);
+    expect(currentYear.value).toBe(2025);
+  });
+
+  it("prevMonth wraps from January to December and decrements year", () => {
+    const { currentMonth, currentYear, prevMonth } = useCalendar();
+    currentMonth.value = 0;
+    currentYear.value = 2024;
+    prevMonth();
+    expect(currentMonth.value).toBe(11);
+    expect(currentYear.value).toBe(2023);
+  });
+
+  it("daysInMonth returns 42 days", () => {
+    const { daysInMonth } = useCalendar();
+    expect(daysInMonth.value.length).toBe(42);
+  });
+});
+
+</pre>
+
+<h3 id="konsol-output-for-testen">Konsol output for testen</h3>
+<pre>
+ RERUN  src/components/__tests__/useCalendar.test.js x2 
+
+ ✓ src/components/__tests__/useCalendar.test.js (6 tests) 5ms
+   ✓ useCalendar > returns current year and month 1ms
+   ✓ useCalendar > nextMonth increments the month 0ms
+   ✓ useCalendar > prevMonth decrements the month 0ms
+   ✓ useCalendar > nextMonth wraps from December to January and increments year 0ms
+   ✓ useCalendar > prevMonth wraps from January to December and decrements year 0ms
+   ✓ useCalendar > daysInMonth returns 42 days 1ms
+
+ Test Files  1 passed (1)
+      Tests  6 passed (6)
+   Start at  09:50:18
+   Duration  78ms
+
+</pre>
+
+<ol>
+<li>[Test Case 2]</li>
+</ol></p>
     </article>
 </section>
             <!-- endblock -->
@@ -213,11 +286,11 @@
 
     </main>
 
-        <script>var base_url = '.';</script>
-        <script src="assets/js/jquery-3.3.1.slim.min.js"></script>
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/js/mkdocs.js"></script>
-			<script src="search/main.js" defer></script>
+        <script>var base_url = '..';</script>
+        <script src="../assets/js/jquery-3.3.1.slim.min.js"></script>
+        <script src="../assets/js/bootstrap.bundle.min.js"></script>
+        <script src="../assets/js/mkdocs.js"></script>
+			<script src="../search/main.js" defer></script>
 
 </body>
 
