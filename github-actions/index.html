@@ -186,13 +186,80 @@
                 <section class="p-md-5 section-content">
     <article>
         <p><h1 id="github-actions-workflow">GitHub Actions Workflow</h1>
-<p>Our GitHub Actions workflow automates the following tasks:</p>
-<ul>
-<li>Running unit tests</li>
-<li>Running E2E tests</li>
-<li>Deploying to GitHub Pages</li>
-</ul>
-<p>The workflow file is located in <code>.github/workflows/ci.yml</code>.</p></p>
+<p>Denne page site er sat op med en følgende github action.</p>
+<pre><code>name: Deploy MKDocs
+
+on:
+  push:
+    branches:
+      - github-pages
+  pull_request:
+    branches:
+      - github-pages
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: &quot;3.x&quot;
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install mkdocs-dracula-theme
+
+      - name: Deploy
+        run: |
+          git config --global user.name &quot;${GITHUB_ACTOR}&quot;
+          git config --global user.email &quot;${GITHUB_ACTOR}@users.noreply.github.com&quot;
+          mkdocs gh-deploy --force
+
+</code></pre>
+<p>Projektet har været sat op med følgende github actions til at deploplye sitet når der bliver pushet til mainbranchen</p>
+<pre><code>name: Deploy to Firebase Hosting on merge
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci &amp;&amp; npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DBI_2025 }}
+          channelId: live
+          projectId: dbi-2025
+</code></pre>
+<pre><code>name: Deploy to Firebase Hosting on PR
+on: pull_request
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+jobs:
+  build_and_preview:
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci &amp;&amp; npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_DBI_2025 }}
+          projectId: dbi-2025
+</code></pre></p>
     </article>
 </section>
             <!-- endblock -->
