@@ -10,7 +10,8 @@ strukturen og læsbarheden blev forbedret.
 CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat ind i main.scss filen, så stylingen for dette var samlet. 
    
 **Før:**
-<pre>    
+<pre>
+///    
 <style lang="scss" scoped>
 @use "@/assets/main.scss";
 .calendar{
@@ -28,7 +29,8 @@ CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat in
 </pre>        
     
 **Efter:**
-<pre>     
+<pre>
+///     
 .calendar{
 display: flex;
 justify-content: space-between;
@@ -53,6 +55,7 @@ justify-content: space-between;
 
 **Før:**
 <pre>
+///
 <span class="filter__radio">
     <span class="filter__radio-dot" />
 </span>
@@ -60,7 +63,8 @@ justify-content: space-between;
 </pre>        
 
 **Efter:**
-<pre>     
+<pre>
+///     
 <span class="filter__radio">
     <span class="filter__radio-dot"></span>
 </span>
@@ -71,7 +75,8 @@ justify-content: space-between;
     I filen DayCell.vue blev en class omskrevet til at passe strukturen BEM, så stylingen der ellers lå scoped i samme fil kunne rykkes ind i main.scss filen. Hermed var stylingen for DayCell også samlet.
 
 **Før:**
-<pre>     
+<pre>
+///     
 <div v-if="eventCount > 0" class="event-count-badge">
 
 .event-count-badge {
@@ -85,7 +90,8 @@ justify-content: space-between;
 </pre>
    
 **Efter:**
-<pre>    
+<pre>
+///    
 <div v-if="eventCount > 0" class="calendar__cell--event-count">
 
     &--event-count{

@@ -5,7 +5,7 @@
 #### Tests
 De første 4 test er blevet lavet på funktioner som er trukket ud af deres komponenter, og lagt i mappe der hedder "functions-for-testing".
 Der er blevet lavet mockdata, samt omskrevet props til variabler så funktionerne udelukkende har kunne få testet deres logik.
-Sidste test er i virkeligheden flere test der kører på en fil, men det gav mening at køre test på den, da den rent faktisk var en fil for sig selv i produktion. Alle filer og test filer kan til gå på developerbranchen [her.](https://github.com/Stikkelmaal123/team-docs/developer)
+Sidste test er i virkeligheden flere test der kører på en fil, men det gav mening at køre test på den, da den rent faktisk var en fil for sig selv i produktion. Alle filer og test filer kan til gå på developerbranchen [her.](https://github.com/Stikkelmaal123/team-docs/tree/developer)
 
 ##### filterEvents.js test
 ###### function script filterEvents
