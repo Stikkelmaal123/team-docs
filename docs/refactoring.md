@@ -3,7 +3,7 @@
 Vi har undervejs i processen refaktoreret i koden, for at omskrive eksisterende kode så kvaliteten, 
 strukturen og læsbarheden blev forbedret.
 
-## Examples: 
+## Eksempler: 
 
 CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat ind i main.scss filen, så stylingen for dette var samlet. 
    
