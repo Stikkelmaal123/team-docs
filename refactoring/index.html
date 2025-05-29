@@ -189,8 +189,7 @@
 <p>Vi har undervejs i processen refaktoreret i koden, for at omskrive eksisterende kode så kvaliteten, 
 strukturen og læsbarheden blev forbedret.</p>
 <h2 id="examples">Examples:</h2>
-<p>[Test Case 1]
-CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat ind i main.scss filen, så stylingen for dette var samlet. </p>
+<p>CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat ind i main.scss filen, så stylingen for dette var samlet. </p>
 <p><strong>Før:</strong></p>
 <pre><code>&lt;style lang=&quot;scss&quot; scoped&gt;
 @use &quot;@/assets/main.scss&quot;;
@@ -226,8 +225,7 @@ justify-content: space-between;
     }   
 }
 </code></pre>
-<p>[Test Case 2]
-    Inde i FilterRadio.vue blev der addet et span closing tag, så strukturen var komplet.</p>
+<p>Inde i FilterRadio.vue blev der addet et span closing tag, så strukturen var komplet.</p>
 <p><strong>Før:</strong></p>
 <pre><code>&lt;span class=&quot;filter__radio&quot;&gt;
     &lt;span class=&quot;filter__radio-dot&quot; /&gt;
@@ -240,8 +238,7 @@ justify-content: space-between;
 &lt;/span&gt;
 &lt;div class=&quot;filter__content&quot;&gt;
 </code></pre>
-<p>[Test Case 3]
-    I filen DayCell.vue blev en class omskrevet til at passe strukturen BEM, så stylingen der ellers lå scoped i samme fil kunne rykkes ind i main.scss filen. Hermed var stylingen for DayCell også samlet.</p>
+<p>I filen DayCell.vue blev en class omskrevet til at passe strukturen BEM, så stylingen der ellers lå scoped i samme fil kunne rykkes ind i main.scss filen. Hermed var stylingen for DayCell også samlet.</p>
 <p><strong>Før:</strong></p>
 <pre><code>&lt;div v-if=&quot;eventCount &gt; 0&quot; class=&quot;event-count-badge&quot;&gt;
 
