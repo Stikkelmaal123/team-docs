@@ -186,12 +186,130 @@
                 <section class="p-md-5 section-content">
     <article>
         <p><h1 id="end-to-end-testing">End-to-End Testing</h1>
-<p>We implemented E2E tests using [Framework Name]. The following flows were tested:</p>
-<ol>
-<li>[Flow 1]</li>
-<li>[Flow 2]</li>
-</ol>
-<p>Details of the test implementation are provided here.</p></p>
+<p>Der er for E2E testing blevet testet de to følgende flows, hvordan der kan creates et event samt hvordan et specifikt event kan findes og slettes.
+Cypress er blevet valgt som framework at teste i.</p>
+<h3 id="1-flow">1 flow</h3>
+<pre><code>describe(&quot;Create Event&quot;, () =&gt; {
+  beforeEach(() =&gt; {
+    cy.visit(&quot;/&quot;);
+  });
+
+  it(&quot;should complete the full create event flow&quot;, () =&gt; {
+    // Login with valid credentials
+    cy.get('.login-page__input[type=&quot;email&quot;]').type(&quot;john@doe.com&quot;);
+    cy.get('.login-page__input[type=&quot;password&quot;]').type(&quot;123456&quot;);
+    cy.get('.login-page__button[type=&quot;submit&quot;]').click();
+
+    cy.url().should(&quot;not.include&quot;, &quot;/login&quot;);
+    cy.get(&quot;.home-view&quot;).should(&quot;be.visible&quot;);
+
+    // Navigate to the calendar page
+    cy.get('.sidenav__link[href=&quot;/calendar&quot;]').click();
+    cy.url().should(&quot;include&quot;, &quot;/calendar&quot;);
+    cy.get(&quot;.calendar-view&quot;).should(&quot;be.visible&quot;);
+
+    // Select a date in the calendar
+    cy.get(&quot;.calendar__grid&quot;).should(&quot;be.visible&quot;);
+    cy.get(&quot;.calendar__cell&quot;).contains(&quot;15&quot;).click();
+
+    cy.get(&quot;.event-list&quot;).should(&quot;be.visible&quot;);
+    cy.get(&quot;.event-list__title&quot;).should(&quot;contain&quot;, &quot;Events for Thu May 15 2025&quot;);
+
+    // Open the CreateEvent modal via the add button
+    cy.get(&quot;.event-list__add-btn&quot;).click();
+    cy.get(&quot;.event-modal&quot;).should(&quot;be.visible&quot;);
+
+    // Fill in the CreateEvent form and submit
+    cy.get(&quot;.date-input&quot;).clear().type(&quot;2025-05-15&quot;);
+
+    // Fixed dropdown interactions - target by label and use correct Danish text
+    cy.contains(&quot;label&quot;, &quot;Skema&quot;).parent().find(&quot;.dropdown__header&quot;).click();
+    cy.get(&quot;.dropdown__search-input&quot;).type(&quot;Ryd&quot;);
+    cy.get(&quot;.dropdown__item&quot;).contains(&quot;Ryd&quot;).click();
+
+    cy.contains(&quot;label&quot;, &quot;Virksomhed&quot;).parent().find(&quot;.dropdown__header&quot;).click();
+    cy.get(&quot;.dropdown__search-input&quot;).type(&quot;Boston&quot;);
+    cy.get(&quot;.dropdown__item&quot;).contains(&quot;Boston&quot;).click();
+
+    cy.contains(&quot;label&quot;, &quot;Lokation&quot;).parent().find(&quot;.dropdown__header&quot;).click();
+    cy.get(&quot;.dropdown__search-input&quot;).type(&quot;veggie&quot;);
+    cy.get(&quot;.dropdown__item&quot;).contains(&quot;Veggie&quot;).click();
+
+    cy.contains(&quot;label&quot;, &quot;Bruger&quot;).parent().find(&quot;.dropdown__header&quot;).click();
+    cy.get(&quot;.dropdown__search-input&quot;).type(&quot;1&quot;);
+    cy.get(&quot;.dropdown__item&quot;).contains(&quot;1&quot;).click();
+
+    cy.contains(&quot;label&quot;, &quot;Objekt&quot;).parent().find(&quot;.dropdown__header&quot;).click();
+    cy.get(&quot;.dropdown__search-input&quot;).type(&quot;vindue&quot;);
+    cy.get(&quot;.dropdown__item&quot;).contains(&quot;W19&quot;).click();
+
+    // Stub the alert before clicking save
+    cy.window().then((win) =&gt; {
+      cy.stub(win, &quot;alert&quot;).as(&quot;windowAlert&quot;);
+    });
+
+    cy.get(&quot;.event-modal__button--save&quot;).click();
+
+    // Verify the alert was called with the correct message
+    cy.get(&quot;@windowAlert&quot;).should(&quot;have.been.calledWith&quot;, &quot;Event saved successfully!&quot;);
+
+    // Wait for the modal to actually close (indicates the save process is complete)
+    cy.get(&quot;.event-modal&quot;).should(&quot;not.exist&quot;);
+
+    // Give extra time for the database operation to complete
+    cy.wait(1500);
+  });
+});
+
+</code></pre>
+<h3 id="2-flow">2 flow</h3>
+<pre><code>describe(&quot;Delete Event&quot;, () =&gt; {
+  beforeEach(() =&gt; {
+    cy.visit(&quot;/&quot;);
+  });
+
+  it(&quot;find a specific event and delete it&quot;, () =&gt; {
+    // Login with valid credentials
+    cy.get('.login-pageinput[type=&quot;email&quot;]').type(&quot;john@doe.com&quot;);
+    cy.get('.login-pageinput[type=&quot;password&quot;]').type(&quot;123456&quot;);
+    cy.get('.login-pagebutton[type=&quot;submit&quot;]').click();
+
+    cy.url().should(&quot;not.include&quot;, &quot;/login&quot;);
+    cy.get(&quot;.home-view&quot;).should(&quot;be.visible&quot;);
+
+    // Navigate to the calendar page
+    cy.get('.sidenavlink[href=&quot;/calendar&quot;]').click();
+    cy.url().should(&quot;include&quot;, &quot;/calendar&quot;);
+    cy.get(&quot;.calendar-view&quot;).should(&quot;be.visible&quot;);
+
+    // Select a date in the calendar
+    cy.get(&quot;.calendargrid&quot;).should(&quot;be.visible&quot;);
+    cy.get(&quot;.calendarcell&quot;).contains(&quot;15&quot;).click();
+
+    cy.get(&quot;.event-list&quot;).should(&quot;be.visible&quot;);
+    cy.get(&quot;.event-listtitle&quot;).should(&quot;contain&quot;, &quot;Events for Thu May 15 2025&quot;);
+
+    cy.contains(&quot;.event-itemtitle&quot;, &quot;Ryd Vinduer&quot;).parent().find(&quot;.event-itemedit-btn&quot;).click();
+    cy.get(&quot;.event-modal&quot;).should(&quot;be.visible&quot;);
+
+    cy.window().then((win) =&gt; {
+      cy.stub(win, &quot;alert&quot;).as(&quot;windowAlert&quot;);
+    });
+
+    cy.get(&quot;.event-modalbutton--delete&quot;).click();
+
+    // Verify the alert was called with the correct message
+    cy.get(&quot;@windowAlert&quot;).should(&quot;have.been.calledWith&quot;, &quot;Event deleted successfully.&quot;);
+
+    // Wait for the modal to actually close (indicates the save process is complete)
+    cy.get(&quot;.event-modal&quot;).should(&quot;not.exist&quot;);
+
+    // Give extra time for the database operation to complete
+    cy.wait(1500);
+  });
+});
+
+</code></pre></p>
     </article>
 </section>
             <!-- endblock -->
