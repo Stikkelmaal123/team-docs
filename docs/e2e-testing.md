@@ -3,7 +3,7 @@
 Der er blevet udført 2 End-to-end tests på projektet via frameworket cypress. 
 Den første test skulle teste flowet tilhørende oprettelse af et event, og test nummer 2 testede sletning af events
 
-### 1 flow for oprettelse af event
+### 1. flow for oprettelse af event
 ```
 describe("Create Event", () => {
   beforeEach(() => {
@@ -79,7 +79,7 @@ describe("Create Event", () => {
 
 ```
 
-### 2 flow for sletning af event
+### 2. flow for sletning af event
 ```
 describe("Delete Event", () => {
   beforeEach(() => {
