@@ -10,8 +10,7 @@ strukturen og læsbarheden blev forbedret.
 CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat ind i main.scss filen, så stylingen for dette var samlet. 
    
 **Før:**
-<pre>
-       
+<pre>    
         <style lang="scss" scoped>
         @use "@/assets/main.scss";
         .calendar{
@@ -26,7 +25,6 @@ CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat in
             }
         }
         </style>
-    
 </pre>        
     
 **Efter:**
@@ -55,12 +53,10 @@ CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat in
 
 **Før:**
 <pre>
-    
         <span class="filter__radio">
             <span class="filter__radio-dot" />
         </span>
         <div class="filter__content">
-        
 </pre>        
 
 **Efter:**
