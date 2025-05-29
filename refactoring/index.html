@@ -192,7 +192,8 @@ strukturen og læsbarheden blev forbedret.</p>
 <p>[Test Case 1]
 CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat ind i main.scss filen, så stylingen for dette var samlet. </p>
 <p><strong>Før:</strong></p>
-<pre>    
+<pre>
+///    
 <style lang="scss" scoped>
 @use "@/assets/main.scss";
 .calendar{
@@ -212,7 +213,8 @@ CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat in
 <pre><code>
 </code></pre>
 <p><strong>Efter:</strong></p>
-<pre>     
+<pre>
+///     
 .calendar{
 display: flex;
 justify-content: space-between;
@@ -236,6 +238,7 @@ justify-content: space-between;
     Inde i FilterRadio.vue blev der addet et span closing tag, så strukturen var komplet.</p>
 <p><strong>Før:</strong></p>
 <pre>
+///
 <span class="filter__radio">
     <span class="filter__radio-dot" />
 </span>
@@ -245,7 +248,8 @@ justify-content: space-between;
 <pre><code>
 </code></pre>
 <p><strong>Efter:</strong></p>
-<pre>     
+<pre>
+///     
 <span class="filter__radio">
     <span class="filter__radio-dot"></span>
 </span>
@@ -255,7 +259,8 @@ justify-content: space-between;
 <p>[Test Case 3]
     I filen DayCell.vue blev en class omskrevet til at passe strukturen BEM, så stylingen der ellers lå scoped i samme fil kunne rykkes ind i main.scss filen. Hermed var stylingen for DayCell også samlet.</p>
 <p><strong>Før:</strong></p>
-<pre>     
+<pre>
+///     
 <div v-if="eventCount > 0" class="event-count-badge">
 
 .event-count-badge {
@@ -269,7 +274,8 @@ justify-content: space-between;
 </pre>
 
 <p><strong>Efter:</strong></p>
-<pre>    
+<pre>
+///    
 <div v-if="eventCount > 0" class="calendar__cell--event-count">
 
     &--event-count{
