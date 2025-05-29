@@ -4,7 +4,7 @@
 
 ### Tests
 
-**1. useCalendar.js test** 
+1. **useCalendar.js test** 
 - Denne test er kørt på filen useCalendar.js. Hele filen er exporteret som en function der bliver brugt flere steder i kalenderen, og der er derfor mange variabler der skal returne det rigtige data 
 ### script for test 1
 <pre>

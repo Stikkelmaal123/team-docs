@@ -4,8 +4,6 @@ Dette er en pages-site omkring versionstyring af dette site: [https://github.com
 
 ## Quick Links
 
-- [Team Guidelines](guidelines.md)
-- [About Our Team](about.md)
 - [Git Branching Strategy](git-strategy.md)
 - [Static Code Analysis](static-code-analysis.md)
 - [Unit Testing](unit-testing.md)
