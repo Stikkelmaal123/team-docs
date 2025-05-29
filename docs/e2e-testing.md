@@ -1,7 +1,7 @@
 # End-to-End Testing
 
-Der er for E2E testing blevet testet de to følgende flows, hvordan der kan creates et event samt hvordan et specifikt event kan findes og slettes.
-Cypress er blevet valgt som framework at teste i.
+Der er blevet udført 2 End-to-end tests på projektet via frameworket cypress. 
+Den første test skulle teste flowet tilhørende oprettelse af et event, og test nummer 2 testede sletning af events
 
 ### 1 flow
 ```
