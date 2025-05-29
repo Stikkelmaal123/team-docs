@@ -10,8 +10,8 @@ strukturen og læsbarheden blev forbedret.
 CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat ind i main.scss filen, så stylingen for dette var samlet. 
    
 **Før:**
-<pre>
-///    
+
+```   
 <style lang="scss" scoped>
 @use "@/assets/main.scss";
 .calendar{
@@ -26,11 +26,11 @@ CalendarHeader.vue havde sin egen scoped styling inde i filen, dette blev sat in
         }
 }
 </style>
-</pre>        
+```      
     
 **Efter:**
-<pre>
-///     
+
+```    
 .calendar{
 display: flex;
 justify-content: space-between;
@@ -48,35 +48,32 @@ justify-content: space-between;
         }
     }   
 }
-</pre>
+```
 
 [Test Case 2]
     Inde i FilterRadio.vue blev der addet et span closing tag, så strukturen var komplet.
 
 **Før:**
-<pre>
-///
+```
 <span class="filter__radio">
     <span class="filter__radio-dot" />
 </span>
 <div class="filter__content">
-</pre>        
+```        
 
 **Efter:**
-<pre>
-///     
+```     
 <span class="filter__radio">
     <span class="filter__radio-dot"></span>
 </span>
 <div class="filter__content">
-</pre>
+```
 
 [Test Case 3]
     I filen DayCell.vue blev en class omskrevet til at passe strukturen BEM, så stylingen der ellers lå scoped i samme fil kunne rykkes ind i main.scss filen. Hermed var stylingen for DayCell også samlet.
 
 **Før:**
-<pre>
-///     
+```    
 <div v-if="eventCount > 0" class="event-count-badge">
 
 .event-count-badge {
@@ -87,11 +84,10 @@ justify-content: space-between;
     align-items: flex-start;
     padding: 0 0.2rem 2rem 0.2rem;
 }
-</pre>
+```
    
 **Efter:**
-<pre>
-///    
+```   
 <div v-if="eventCount > 0" class="calendar__cell--event-count">
 
     &--event-count{
@@ -102,4 +98,4 @@ justify-content: space-between;
     align-items: flex-start;
     padding: 0 0.2rem 2rem 0.2rem;
  }
-</pre>
+```
